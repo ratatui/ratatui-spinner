@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Add/complete nightly dependency-update automation (Gitea): update deps, quality-gate, bump patch version, tag, push to Gitea + GitHub
 ### 🔧 Chores
 - chore: bump version to 0.4.8
+- chore: bump version to 0.4.9
 **Full Changelog**: https://github.com/sorinirimies/tui-spinner/compare/v0.4.7...v0.4.9
 ## 0.4.7 - 2026-08-15
 ### 🔧 Chores
