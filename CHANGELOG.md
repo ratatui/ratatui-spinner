@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 0.4.14 - 2026-08-28
+### 🔧 Chores
+- chore: bump version to 0.4.14
+**Full Changelog**: https://github.com/sorinirimies/tui-spinner/compare/v0.4.13...v0.4.14
 ## 0.4.13 - 2026-08-27
 ### 🔧 Chores
 - chore: bump version to 0.4.13
