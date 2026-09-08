@@ -579,8 +579,8 @@ mod tests {
             let max_row = p.iter().map(|d| d.row).max().unwrap();
             let min_col = p.iter().map(|d| d.col).min().unwrap();
             let max_col = p.iter().map(|d| d.col).max().unwrap();
-            let height = (max_row - min_row + 1) as usize;
-            let width = (max_col - min_col + 1) as usize;
+            let height = max_row - min_row + 1;
+            let width = max_col - min_col + 1;
             // Should be approximately square (within 1 dot either way).
             let diff = height.abs_diff(width);
             assert!(
@@ -591,6 +591,7 @@ mod tests {
     }
 
     #[test]
+    #[allow(clippy::cast_precision_loss)] // Radius-four coordinates and point count fit exactly.
     fn circle_perimeter_sorted_clockwise() {
         let p = circle_perimeter(4);
         let cr = p.iter().map(|d| d.row as f64).sum::<f64>() / p.len() as f64;
@@ -703,16 +704,10 @@ mod tests {
         let area = Rect::new(0, 0, 10, 5);
         let mut b0 = Buffer::empty(area);
         let mut b5 = Buffer::empty(area);
-        Widget::render(
-            &CircleSpinner::new(0).radius(4).spin(Spin::Clockwise),
-            area,
-            &mut b0,
-        );
-        Widget::render(
-            &CircleSpinner::new(5).radius(4).spin(Spin::Clockwise),
-            area,
-            &mut b5,
-        );
+        let spinner = CircleSpinner::new(0).radius(4).spin(Spin::Clockwise);
+        Widget::render(&spinner, area, &mut b0);
+        let spinner = CircleSpinner::new(5).radius(4).spin(Spin::Clockwise);
+        Widget::render(&spinner, area, &mut b5);
         assert_ne!(b0, b5, "tick 0 and tick 5 should render differently");
     }
 
@@ -722,35 +717,26 @@ mod tests {
         let area = Rect::new(0, 0, 10, 5);
         let mut b0 = Buffer::empty(area);
         let mut b1 = Buffer::empty(area);
-        Widget::render(
-            &CircleSpinner::new(0).radius(4).ticks_per_step(3),
-            area,
-            &mut b0,
-        );
-        Widget::render(
-            &CircleSpinner::new(1).radius(4).ticks_per_step(3),
-            area,
-            &mut b1,
-        );
+        let spinner = CircleSpinner::new(0).radius(4).ticks_per_step(3);
+        Widget::render(&spinner, area, &mut b0);
+        let spinner = CircleSpinner::new(1).radius(4).ticks_per_step(3);
+        Widget::render(&spinner, area, &mut b1);
         assert_eq!(b0, b1, "slow spinner at tick 1 should equal tick 0");
     }
 
     #[test]
     fn cw_and_ccw_differ() {
         let area = Rect::new(0, 0, 10, 5);
-        let mut bcw = Buffer::empty(area);
-        let mut bccw = Buffer::empty(area);
-        Widget::render(
-            &CircleSpinner::new(5).radius(4).spin(Spin::Clockwise),
-            area,
-            &mut bcw,
+        let mut clockwise = Buffer::empty(area);
+        let mut reverse = Buffer::empty(area);
+        let spinner = CircleSpinner::new(5).radius(4).spin(Spin::Clockwise);
+        Widget::render(&spinner, area, &mut clockwise);
+        let spinner = CircleSpinner::new(5).radius(4).spin(Spin::CounterClockwise);
+        Widget::render(&spinner, area, &mut reverse);
+        assert_ne!(
+            clockwise, reverse,
+            "CW and CCW should produce different frames"
         );
-        Widget::render(
-            &CircleSpinner::new(5).radius(4).spin(Spin::CounterClockwise),
-            area,
-            &mut bccw,
-        );
-        assert_ne!(bcw, bccw, "CW and CCW should produce different frames");
     }
 
     #[test]

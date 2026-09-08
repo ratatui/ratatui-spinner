@@ -19,7 +19,6 @@ exclude = [
     "cliff.toml",
     "justfile",
     "examples/vhs/",
-    "scripts/",
 ]
 
 [dependencies]
