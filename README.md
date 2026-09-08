@@ -467,6 +467,16 @@ With `Spin::CounterClockwise` the wave travels in the opposite direction.
 
 ---
 
+## Development
+
+Run `just check-all` for formatting, clippy, unit tests, doctests, and documentation checks.
+Formatting uses `cargo +nightly fmt` with Ratatui formatting conventions. Builds and tests
+use stable Rust; documentation uses nightly to check the docs.rs configuration.
+
+`just package` verifies the crate archive locally without publishing. `just changelog-preview`
+uses git-cliff to preview release notes. Publication remains disabled during migration.
+See [AGENTS.md](AGENTS.md) for repository guidance and the underlying Cargo commands.
+
 ## Generating Demo GIFs
 
 ```sh

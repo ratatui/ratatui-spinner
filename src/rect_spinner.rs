@@ -582,7 +582,8 @@ mod tests {
     fn widget_renders() {
         let area = Rect::new(0, 0, 20, 10);
         let mut buf = Buffer::empty(area);
-        Widget::render(&RectSpinner::new(0), area, &mut buf);
+        let spinner = RectSpinner::new(0);
+        Widget::render(&spinner, area, &mut buf);
     }
 
     #[test]
@@ -591,12 +592,10 @@ mod tests {
         let mut b1 = Buffer::empty(area);
         let mut b2 = Buffer::empty(area);
 
-        Widget::render(&RectSpinner::new(0).spin(Spin::Clockwise), area, &mut b1);
-        Widget::render(
-            &RectSpinner::new(0).spin(Spin::CounterClockwise),
-            area,
-            &mut b2,
-        );
+        let spinner = RectSpinner::new(0).spin(Spin::Clockwise);
+        Widget::render(&spinner, area, &mut b1);
+        let spinner = RectSpinner::new(0).spin(Spin::CounterClockwise);
+        Widget::render(&spinner, area, &mut b2);
 
         assert_ne!(b1, b2);
     }
@@ -606,8 +605,10 @@ mod tests {
         let area = Rect::new(0, 0, 20, 10);
         let mut b0 = Buffer::empty(area);
         let mut b5 = Buffer::empty(area);
-        Widget::render(&RectSpinner::new(0), area, &mut b0);
-        Widget::render(&RectSpinner::new(5), area, &mut b5);
+        let spinner = RectSpinner::new(0);
+        Widget::render(&spinner, area, &mut b0);
+        let spinner = RectSpinner::new(5);
+        Widget::render(&spinner, area, &mut b5);
         assert_ne!(b0, b5);
     }
 

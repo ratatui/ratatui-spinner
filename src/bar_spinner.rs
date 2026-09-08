@@ -1448,14 +1448,17 @@ mod tests {
 
     #[test]
     fn dim_columns_use_dim_byte() {
-        let e = RectEngine::build(20, 1, 6, Spin::Clockwise, BarMotion::Bounce);
+        let mut e = RectEngine::build(20, 1, 6, Spin::Clockwise, BarMotion::Bounce);
+        e.walk();
+        e.walk();
+        assert_eq!(e.anchor, 2);
         let lines = e.render_lines(Color::Cyan, Color::DarkGray, 3, DIM_BYTE, 0xFF, None);
         let spans = &lines[0].spans;
         let dim_char = char::from_u32(0x2800 + u32::from(DIM_BYTE)).unwrap();
         // Columns before the arc anchor should all be DIM_BYTE.
-        for i in 0..e.anchor {
+        for (i, span) in spans[..e.anchor].iter().enumerate() {
             assert_eq!(
-                spans[i].content.chars().next(),
+                span.content.chars().next(),
                 Some(dim_char),
                 "column {i} should be dim"
             );
