@@ -90,7 +90,7 @@ def main [] {
         {
             name: "test github deps-update workflow computes next version via scripts/version.nu",
             fn: {||
-                let src = (open .github/workflows/deps-update.yml --raw)
+                let src = (open .github/workflows/deps-update.yml.disabled --raw)
                 assert_str_contains $src "nu scripts/version.nu" --msg "should read current version via scripts/version.nu"
                 assert_str_contains $src "PATCH + 1" --msg "should increment the patch segment"
                 assert_str_contains $src "bump_version.nu --yes" --msg "should invoke bump_version.nu non-interactively"
@@ -99,27 +99,14 @@ def main [] {
             }
         },
         {
-            name: "test gitea deps-update workflow computes next version via scripts/version.nu",
+            name: "test archived github release workflow retains its tag trigger",
             fn: {||
-                let src = (open .gitea/workflows/deps-update.yml --raw)
-                assert_str_contains $src "nu scripts/version.nu" --msg "should read current version via scripts/version.nu"
-                assert_str_contains $src "PATCH + 1" --msg "should increment the patch segment"
-                assert_str_contains $src "bump_version.nu --yes" --msg "should invoke bump_version.nu non-interactively"
-                assert_str_contains $src "git push origin main --follow-tags" --msg "should push the commit and tag to trigger release.yml"
-                assert_str_contains $src "actions/workflows/release.yml/dispatches" --msg "should explicitly dispatch release.yml as a fallback trigger"
-            }
-        },
-        {
-            name: "test both deps-update workflows trigger release only on a tag push",
-            fn: {||
-                # release.yml (both platforms) must be scoped to `push: tags: v*`
+                # Preserve the original tag-trigger policy for later release review.
                 # so that pushing the bump commit alone (without --follow-tags)
                 # would NOT be sufficient — this guards against regressing the
                 # `--follow-tags` flag away in a future edit.
-                let gh_release = (open .github/workflows/release.yml --raw)
-                let gitea_release = (open .gitea/workflows/release.yml --raw)
+                let gh_release = (open .github/workflows/release.yml.disabled --raw)
                 assert_str_contains $gh_release "tags:" --msg "github release.yml should trigger on tag push"
-                assert_str_contains $gitea_release "tags:" --msg "gitea release.yml should trigger on tag push"
             }
         },
     ]

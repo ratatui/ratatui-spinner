@@ -172,23 +172,16 @@ GIF files in `examples/vhs/generated/` are tracked via **Git LFS**.
 
 ### Remotes
 ```
-origin          git@github.com:sorinirimies/tui-spinner.git   (primary)
-gitea           ssh://git@192.168.1.204:30009/sorin/tui-spinner.git
-gitea_starscream gitea@192.168.1.44:sorin/tui-spinner.git
+origin   https://github.com/ratatui/ratatui-spinner.git
+upstream https://github.com/sorinirimies/tui-spinner.git
 ```
 
-### Push helpers (justfile)
-```sh
-just push-all               # push main to all three remotes
-just sync-all-gitea         # force-sync both Gitea instances from origin
-just push-all-force         # force-push to all three remotes
-```
+Push and release shortcuts are disabled during migration.
 
 ### Release
-```sh
-just bump 0.2.0             # runs quality gate, bumps version, tags
-just push-release-all       # push commit + tag to all remotes
-```
+Crate publication is disabled with `publish = false`. GitHub release and dependency automation
+is retained in `.yml.disabled` files pending review. Local helpers remain available for now;
+`just bump` changes the version and creates a local commit and tag, but does not push.
 
 ### Commit message style
 Follow Conventional Commits:
@@ -244,7 +237,6 @@ Utility scripts live in `scripts/`:
 |--------|---------|
 | `bump_version.nu` | Quality gate + version bump + tag |
 | `release_prepare.nu` | CHANGELOG via git-cliff + release notes |
-| `setup_gitea.nu` | Add/update a Gitea remote (`--remote <name>`) |
 | `upgrade_deps.nu` | `cargo upgrade` + cross-check |
 | `version.nu` | Print current crate version |
 
