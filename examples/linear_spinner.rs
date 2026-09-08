@@ -25,8 +25,8 @@ use ratatui::{
     widgets::{Block, BorderType, Padding, Paragraph},
     DefaultTerminal, Frame,
 };
+use ratatui_spinner::{Direction, Flow, LinearSpinner, LinearStyle};
 use std::time::{Duration, Instant};
-use tui_spinner::{Direction, Flow, LinearSpinner, LinearStyle};
 
 macro_rules! sty {
     (dim) => {

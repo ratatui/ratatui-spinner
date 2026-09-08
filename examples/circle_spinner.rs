@@ -20,8 +20,8 @@ use ratatui::{
     widgets::{Block, BorderType, Padding, Paragraph},
     DefaultTerminal, Frame,
 };
+use ratatui_spinner::{CircleSpinner, Spin};
 use std::time::{Duration, Instant};
-use tui_spinner::{CircleSpinner, Spin};
 
 macro_rules! sty {
     (dim) => {

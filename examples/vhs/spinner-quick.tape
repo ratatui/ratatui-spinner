@@ -1,4 +1,4 @@
-# VHS tape for tui-spinner — Quick Preview
+# VHS tape for ratatui-spinner — Quick Preview
 # Run: vhs examples/vhs/spinner-quick.tape
 
 Output examples/vhs/generated/spinner-quick.gif

@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-# Prepare a release for tui-spinner.
+# Prepare a release for ratatui-spinner.
 # Updates Cargo.toml, generates changelog, release notes with install instructions.
 # Usage: nu scripts/release_prepare.nu v0.2.0
 
@@ -13,7 +13,7 @@ def main [
     let cyan = (ansi cyan)
 
     print $"($cyan)═══════════════════════════════════════════════($reset)"
-    print $"($cyan)  tui-spinner release preparation($reset)"
+    print $"($cyan)  ratatui-spinner release preparation($reset)"
     print $"($cyan)═══════════════════════════════════════════════($reset)"
     print ""
 
@@ -95,7 +95,7 @@ def main [
     # ── build RELEASE_NOTES.md ───────────────────────────────────────
     print $"($cyan)▸ building RELEASE_NOTES.md ...($reset)"
 
-    mut notes = $"# tui-spinner ($tag)\n\n"
+    mut notes = $"# ratatui-spinner ($tag)\n\n"
 
     # include diff content if available
     let diff_file = $"_release_diff_($tag).md"
@@ -108,14 +108,14 @@ def main [
 
     # install instructions
     $notes = $notes + "## Installation\n\n"
-    $notes = $notes + "Add `tui-spinner` to your `Cargo.toml`:\n\n"
+    $notes = $notes + "Add `ratatui-spinner` to your `Cargo.toml`:\n\n"
     $notes = $notes + "```toml\n"
     $notes = $notes + "[dependencies]\n"
-    $notes = $notes + $"tui-spinner = \"($version)\"\n"
+    $notes = $notes + $"ratatui-spinner = \"($version)\"\n"
     $notes = $notes + "```\n\n"
     $notes = $notes + "Or install via cargo:\n\n"
     $notes = $notes + "```sh\n"
-    $notes = $notes + $"cargo add tui-spinner@($version)\n"
+    $notes = $notes + $"cargo add ratatui-spinner@($version)\n"
     $notes = $notes + "```\n"
 
     $notes | save --force RELEASE_NOTES.md

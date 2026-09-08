@@ -9,7 +9,7 @@
 //! - The frame count
 //!
 //! The four **CUSTOM** tiles demonstrate passing any `&'static [char]` slice
-//! directly to [`.frames()`](tui_spinner::FluxSpinner::frames).
+//! directly to [`.frames()`](ratatui_spinner::FluxSpinner::frames).
 //!
 //! **Controls:** `q` / `Esc` — Quit
 //!
@@ -24,8 +24,8 @@ use ratatui::{
     widgets::{Block, BorderType, Paragraph},
     DefaultTerminal, Frame,
 };
+use ratatui_spinner::{FluxFrames, Spin};
 use std::time::{Duration, Instant};
-use tui_spinner::{FluxFrames, Spin};
 
 // ── Style macros ──────────────────────────────────────────────────────────────
 
@@ -350,7 +350,7 @@ fn render_meta(frame: &mut Frame, area: Rect, tile: &Tile) {
 
 /// Return the current animated glyph for `frames` at `tick` in `spin` direction.
 ///
-/// Mirrors the index arithmetic inside [`tui_spinner::FluxSpinner`]'s renderer.
+/// Mirrors the index arithmetic inside [`ratatui_spinner::FluxSpinner`]'s renderer.
 fn frame_char(frames: &[char], tick: u64, spin: Spin) -> char {
     let n = frames.len();
     if n == 0 {

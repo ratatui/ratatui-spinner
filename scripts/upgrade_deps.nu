@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-# Nightly dependency upgrade script for tui-spinner.
+# Nightly dependency upgrade script for ratatui-spinner.
 # Runs cargo upgrade + cargo update, then applies a quality gate.
 # Usage: nu scripts/upgrade_deps.nu [--bot-name <name>] [--bot-email <email>] [--remote <remote>] [--dry-run]
 
@@ -44,7 +44,7 @@ def main [
     let cyan = (ansi cyan)
 
     print $"($cyan)═══════════════════════════════════════════════($reset)"
-    print $"($cyan)  tui-spinner dependency upgrade($reset)"
+    print $"($cyan)  ratatui-spinner dependency upgrade($reset)"
     print $"($cyan)═══════════════════════════════════════════════($reset)"
     print ""
 

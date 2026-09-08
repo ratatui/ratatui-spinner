@@ -1101,6 +1101,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "ratatui-spinner"
+version = "0.4.18"
+dependencies = [
+ "color-eyre",
+ "crossterm",
+ "ratatui",
+]
+
+[[package]]
 name = "ratatui-termina"
 version = "0.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1581,15 +1590,6 @@ dependencies = [
  "sharded-slab",
  "thread_local",
  "tracing-core",
-]
-
-[[package]]
-name = "tui-spinner"
-version = "0.4.18"
-dependencies = [
- "color-eyre",
- "crossterm",
- "ratatui",
 ]
 
 [[package]]

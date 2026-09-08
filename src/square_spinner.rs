@@ -7,7 +7,7 @@
 //!
 //! ```no_run
 //! use ratatui::style::Color;
-//! use tui_spinner::{SquareSpinner, Spin, Centre};
+//! use ratatui_spinner::{SquareSpinner, Spin, Centre};
 //!
 //! // Filled center, clockwise
 //! let spinner = SquareSpinner::new(42)
@@ -35,7 +35,7 @@ use ratatui::widgets::{Block, Widget};
 
 use crate::rect_spinner::Spin;
 
-// Re-export Centre so callers can use `tui_spinner::Centre`.
+// Re-export Centre so callers can use `ratatui_spinner::Centre`.
 pub use crate::rect_spinner::Centre;
 
 // ── Braille constants ─────────────────────────────────────────────────────────
@@ -387,7 +387,7 @@ impl SquareEngine {
 ///
 /// ```no_run
 /// use ratatui::style::Color;
-/// use tui_spinner::{Centre, SquareSpinner, Spin};
+/// use ratatui_spinner::{Centre, SquareSpinner, Spin};
 ///
 /// let spinner = SquareSpinner::new(42)
 ///     .size(3)
@@ -418,7 +418,7 @@ impl<'a> SquareSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::SquareSpinner;
+    /// use ratatui_spinner::SquareSpinner;
     ///
     /// let spinner = SquareSpinner::new(42);
     /// ```
@@ -445,7 +445,7 @@ impl<'a> SquareSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::SquareSpinner;
+    /// use ratatui_spinner::SquareSpinner;
     ///
     /// let large = SquareSpinner::new(0).size(4);
     /// ```
@@ -460,7 +460,7 @@ impl<'a> SquareSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{SquareSpinner, Spin};
+    /// use ratatui_spinner::{SquareSpinner, Spin};
     ///
     /// let ccw = SquareSpinner::new(0).spin(Spin::CounterClockwise);
     /// ```
@@ -475,7 +475,7 @@ impl<'a> SquareSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{Centre, SquareSpinner};
+    /// use ratatui_spinner::{Centre, SquareSpinner};
     ///
     /// let hollow = SquareSpinner::new(0).centre(Centre::Empty);
     /// ```
@@ -491,7 +491,7 @@ impl<'a> SquareSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::SquareSpinner;
+    /// use ratatui_spinner::SquareSpinner;
     ///
     /// let spinner = SquareSpinner::new(0).arc_color(Color::Cyan);
     /// ```
@@ -509,7 +509,7 @@ impl<'a> SquareSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::SquareSpinner;
+    /// use ratatui_spinner::SquareSpinner;
     ///
     /// let spinner = SquareSpinner::new(0).dim_color(Color::DarkGray);
     /// ```
@@ -524,7 +524,7 @@ impl<'a> SquareSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::SquareSpinner;
+    /// use ratatui_spinner::SquareSpinner;
     ///
     /// let slow = SquareSpinner::new(0).ticks_per_step(3);
     /// ```
@@ -540,7 +540,7 @@ impl<'a> SquareSpinner<'a> {
     ///
     /// ```
     /// use ratatui::widgets::Block;
-    /// use tui_spinner::SquareSpinner;
+    /// use ratatui_spinner::SquareSpinner;
     ///
     /// let spinner = SquareSpinner::new(0).block(Block::bordered().title("Loading…"));
     /// ```
@@ -569,7 +569,7 @@ impl<'a> SquareSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::SquareSpinner;
+    /// use ratatui_spinner::SquareSpinner;
     ///
     /// let (cols, rows) = SquareSpinner::new(0).size(2).char_size();
     /// assert_eq!(cols, 4);

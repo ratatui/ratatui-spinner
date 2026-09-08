@@ -64,7 +64,7 @@ const DIM_BYTE: u8 = 0xC0;
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{BarSpinner, BarTrack};
+/// use ratatui_spinner::{BarSpinner, BarTrack};
 ///
 /// let rail  = BarSpinner::new(0).track(BarTrack::Rail);    // ⣀ default
 /// let solid = BarSpinner::new(0).track(BarTrack::Full);    // ⣿ solid track
@@ -126,7 +126,7 @@ impl BarTrack {
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{BarSpinner, BarStyle};
+/// use ratatui_spinner::{BarSpinner, BarStyle};
 ///
 /// let braille = BarSpinner::new(0);                                    // default
 /// let block   = BarSpinner::new(0).bar_style(BarStyle::Block);
@@ -214,7 +214,7 @@ impl BarStyle {
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{BarSpinner, BarMotion, Spin};
+/// use ratatui_spinner::{BarSpinner, BarMotion, Spin};
 ///
 /// // Default ping-pong
 /// let bounce = BarSpinner::new(0).motion(BarMotion::Bounce);
@@ -253,7 +253,7 @@ pub enum BarMotion {
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{BarSpinner, BarOrientation};
+/// use ratatui_spinner::{BarSpinner, BarOrientation};
 ///
 /// let h = BarSpinner::new(0).orientation(BarOrientation::Horizontal);
 /// let v = BarSpinner::new(0).orientation(BarOrientation::Vertical);
@@ -688,7 +688,7 @@ impl VertRectEngine {
 /// use ratatui::style::Color;
 /// use ratatui::Frame;
 /// use ratatui::layout::Rect;
-/// use tui_spinner::{BarSpinner, BarTrack, Spin};
+/// use ratatui_spinner::{BarSpinner, BarTrack, Spin};
 ///
 /// fn draw(frame: &mut Frame, area: Rect, tick: u64) {
 ///     // Fills the full width of `area` — typical Zed/Claude style.
@@ -752,7 +752,7 @@ impl<'a> BarSpinner<'a> {
     /// **Zed-style** preset — 1 row, cyan arc, subtle Rail track, clockwise.
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     /// let s = BarSpinner::zed(42);
     /// ```
     #[must_use]
@@ -766,7 +766,7 @@ impl<'a> BarSpinner<'a> {
     /// **Claude-style** preset — 2 rows, warm-orange arc, Rail track, clockwise.
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     /// let s = BarSpinner::claude(42);
     /// ```
     #[must_use]
@@ -780,7 +780,7 @@ impl<'a> BarSpinner<'a> {
     /// **Minimal** preset — 1 row, white arc, Empty track (arc floats on space).
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     /// let s = BarSpinner::minimal(42);
     /// ```
     #[must_use]
@@ -795,7 +795,7 @@ impl<'a> BarSpinner<'a> {
     /// **Solid** preset — 1 row, cyan arc, Full track, sharp zero-fade edges.
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     /// let s = BarSpinner::solid(42);
     /// ```
     #[must_use]
@@ -815,7 +815,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let spinner = BarSpinner::new(42);
     /// ```
@@ -851,7 +851,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let fixed = BarSpinner::new(0).width(24);
     /// let auto  = BarSpinner::new(0).width(0); // fills area
@@ -870,7 +870,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let thick = BarSpinner::new(0).height(2);
     /// ```
@@ -885,7 +885,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let narrow = BarSpinner::new(0).arc_width(6);
     /// let wide   = BarSpinner::new(0).arc_width(20);
@@ -902,7 +902,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{BarSpinner, Spin};
+    /// use ratatui_spinner::{BarSpinner, Spin};
     ///
     /// let rtl = BarSpinner::new(0).spin(Spin::CounterClockwise);
     /// ```
@@ -917,7 +917,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let slow = BarSpinner::new(0).ticks_per_step(3);
     /// ```
@@ -933,7 +933,7 @@ impl<'a> BarSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let spinner = BarSpinner::new(0).arc_color(Color::LightBlue);
     /// ```
@@ -952,7 +952,7 @@ impl<'a> BarSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// // Visible track
     /// let with_track    = BarSpinner::new(0).dim_color(Color::DarkGray);
@@ -973,7 +973,7 @@ impl<'a> BarSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let s = BarSpinner::new(0).with_colors(Color::Cyan, Color::DarkGray);
     /// ```
@@ -989,7 +989,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{BarSpinner, BarTrack};
+    /// use ratatui_spinner::{BarSpinner, BarTrack};
     ///
     /// let solid = BarSpinner::new(0).track(BarTrack::Full);
     /// let float = BarSpinner::new(0).track(BarTrack::Empty);
@@ -1008,7 +1008,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let sharp = BarSpinner::new(0).fade_width(0);
     /// let soft  = BarSpinner::new(0).fade_width(3); // default
@@ -1034,7 +1034,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let light = BarSpinner::new(0).arc_char(0x3F); // ⠿ lighter arc
     /// ```
@@ -1054,7 +1054,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{BarSpinner, BarStyle};
+    /// use ratatui_spinner::{BarSpinner, BarStyle};
     ///
     /// let block = BarSpinner::new(0).bar_style(BarStyle::Block);
     /// let dot   = BarSpinner::new(0).bar_style(BarStyle::Dot);
@@ -1075,7 +1075,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{BarSpinner, BarMotion, Spin};
+    /// use ratatui_spinner::{BarSpinner, BarMotion, Spin};
     ///
     /// // Continuous left-to-right sweep
     /// let sweep = BarSpinner::new(0)
@@ -1106,7 +1106,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{BarSpinner, BarOrientation};
+    /// use ratatui_spinner::{BarSpinner, BarOrientation};
     ///
     /// let v = BarSpinner::new(0)
     ///     .orientation(BarOrientation::Vertical)
@@ -1129,7 +1129,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{BarSpinner, BarOrientation};
+    /// use ratatui_spinner::{BarSpinner, BarOrientation};
     ///
     /// // Thick horizontal bar (3 rows):
     /// let h = BarSpinner::new(0).thickness(3);
@@ -1151,7 +1151,7 @@ impl<'a> BarSpinner<'a> {
     ///
     /// ```
     /// use ratatui::widgets::Block;
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let spinner = BarSpinner::new(0)
     ///     .block(Block::bordered().title("Loading…"));
@@ -1182,7 +1182,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// assert_eq!(
     ///     BarSpinner::new(0).width(20).height(2).char_size(),
@@ -1210,7 +1210,7 @@ impl<'a> BarSpinner<'a> {
     ///
     /// ```
     /// use ratatui::widgets::Cell;
-    /// use tui_spinner::BarSpinner;
+    /// use ratatui_spinner::BarSpinner;
     ///
     /// let spinner = BarSpinner::new(0);
     /// let _cell = Cell::from(spinner.to_lines(20, 1));

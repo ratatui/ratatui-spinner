@@ -1,6 +1,6 @@
 //! # Embedding Spinners in a Table
 //!
-//! Demonstrates the headline feature of `tui-spinner`: because every spinner
+//! Demonstrates the headline feature of `ratatui-spinner`: because every spinner
 //! implements `Into<Text>`, it drops straight into any widget that accepts
 //! text content — here a Ratatui [`Table`]'s [`Cell`]s.
 //!
@@ -26,10 +26,10 @@ use ratatui::{
     widgets::{Block, BorderType, Cell, Paragraph, Row, Table},
     DefaultTerminal, Frame,
 };
-use std::time::{Duration, Instant};
-use tui_spinner::{
+use ratatui_spinner::{
     BarSpinner, CircleSpinner, Direction, FluxSpinner, LinearSpinner, Spin, SquareSpinner,
 };
+use std::time::{Duration, Instant};
 
 // ── App ───────────────────────────────────────────────────────────────────────
 
@@ -100,7 +100,7 @@ fn render_header(frame: &mut Frame, area: Rect) {
     frame.render_widget(
         Paragraph::new(line).alignment(Alignment::Center).block(
             Block::bordered()
-                .title(" tui-spinner · table embedding ")
+                .title(" ratatui-spinner · table embedding ")
                 .title_alignment(Alignment::Center)
                 .border_type(BorderType::Rounded)
                 .border_style(dim()),

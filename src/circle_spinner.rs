@@ -339,7 +339,7 @@ impl CircleEngine {
 /// use ratatui::style::Color;
 /// use ratatui::Frame;
 /// use ratatui::layout::Rect;
-/// use tui_spinner::CircleSpinner;
+/// use ratatui_spinner::CircleSpinner;
 ///
 /// fn draw(frame: &mut Frame, area: Rect, tick: u64) {
 ///     frame.render_widget(
@@ -375,7 +375,7 @@ impl<'a> CircleSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::CircleSpinner;
+    /// use ratatui_spinner::CircleSpinner;
     ///
     /// let spinner = CircleSpinner::new(42);
     /// ```
@@ -400,7 +400,7 @@ impl<'a> CircleSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::CircleSpinner;
+    /// use ratatui_spinner::CircleSpinner;
     ///
     /// let big = CircleSpinner::new(0).radius(8);
     /// ```
@@ -423,7 +423,7 @@ impl<'a> CircleSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{CircleSpinner, Spin};
+    /// use ratatui_spinner::{CircleSpinner, Spin};
     ///
     /// let ccw = CircleSpinner::new(0).spin(Spin::CounterClockwise);
     /// ```
@@ -446,7 +446,7 @@ impl<'a> CircleSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::CircleSpinner;
+    /// use ratatui_spinner::CircleSpinner;
     ///
     /// let spinner = CircleSpinner::new(0).arc_color(Color::Cyan);
     /// ```
@@ -462,7 +462,7 @@ impl<'a> CircleSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::CircleSpinner;
+    /// use ratatui_spinner::CircleSpinner;
     ///
     /// let spinner = CircleSpinner::new(0).dim_color(Color::DarkGray);
     /// ```
@@ -498,7 +498,7 @@ impl<'a> CircleSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::CircleSpinner;
+    /// use ratatui_spinner::CircleSpinner;
     ///
     /// let (cols, rows) = CircleSpinner::new(0).radius(4).char_size();
     /// // dot_cols = 2*4+1 = 9, char_cols = ceil(9/2) = 5

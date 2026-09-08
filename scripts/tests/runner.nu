@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-# runner.nu — Shared test runner for tui-spinner nushell scripts.
+# runner.nu — Shared test runner for ratatui-spinner nushell scripts.
 # Discovers and runs all `test ` prefixed commands exported from a test module.
 #
 # Usage (from another test file):

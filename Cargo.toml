@@ -1,13 +1,13 @@
 [package]
-name = "tui-spinner"
+name = "ratatui-spinner"
 version = "0.4.18"
 authors = ["Sorin Albu-Irimies <sorinirimies@gmail.com>"]
 edition = "2021"
 rust-version = "1.74.0"
 license = "MIT"
 description = "Customizable animated spinner widgets for Ratatui — braille arcs, bouncing bars, rotating glyphs, and symbol styles"
-repository = "https://github.com/sorinirimies/tui-spinner"
-homepage = "https://github.com/sorinirimies/tui-spinner"
+repository = "https://github.com/ratatui/ratatui-spinner"
+homepage = "https://github.com/ratatui/ratatui-spinner"
 keywords = ["tui", "terminal", "ratatui", "spinner", "widget"]
 categories = ["command-line-interface", "visualization", "rendering", "gui", "graphics"]
 readme = "README.md"
@@ -31,7 +31,7 @@ ratatui = { version = "0.30", features = ["crossterm"] }
 crossterm = "0.29"
 
 [lib]
-name = "tui_spinner"
+name = "ratatui_spinner"
 path = "src/lib.rs"
 
 [[example]]

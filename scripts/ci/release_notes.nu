@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 # ──────────────────────────────────────────────────────────────────────────────
-#  tui-spinner – CI Release Notes Generator
+#  ratatui-spinner – CI Release Notes Generator
 # ──────────────────────────────────────────────────────────────────────────────
 #  Called by the release workflow AFTER the tag has been pushed.
 #  The version is already bumped in Cargo.toml — this script
@@ -31,16 +31,16 @@ def main [raw_tag: string] {
     # ── Generate RELEASE_NOTES.md ─────────────────────────────
     print "  Generating RELEASE_NOTES.md…"
 
-    mut notes = $"# tui-spinner v($version)\n\n"
+    mut notes = $"# ratatui-spinner v($version)\n\n"
     $notes = $notes + "## Installation\n\n"
-    $notes = $notes + "Add `tui-spinner` to your `Cargo.toml`:\n\n"
+    $notes = $notes + "Add `ratatui-spinner` to your `Cargo.toml`:\n\n"
     $notes = $notes + "```toml\n"
     $notes = $notes + "[dependencies]\n"
-    $notes = $notes + $"tui-spinner = \"($version)\"\n"
+    $notes = $notes + $"ratatui-spinner = \"($version)\"\n"
     $notes = $notes + "```\n\n"
     $notes = $notes + "Or install via cargo:\n\n"
     $notes = $notes + "```sh\n"
-    $notes = $notes + $"cargo add tui-spinner@($version)\n"
+    $notes = $notes + $"cargo add ratatui-spinner@($version)\n"
     $notes = $notes + "```\n\n"
 
     # Append changelog for this version

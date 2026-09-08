@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-# run_all.nu — Discover and run all test_*.nu files for tui-spinner.
+# run_all.nu — Discover and run all test_*.nu files for ratatui-spinner.
 # Usage: nu scripts/tests/run_all.nu
 #
 # Discovers every test_*.nu file in the same directory, executes each one,
@@ -13,7 +13,7 @@ def main [] {
     let cyan = (ansi cyan)
 
     print $"($cyan)═══════════════════════════════════════════════($reset)"
-    print $"($cyan)  tui-spinner — nushell test suite($reset)"
+    print $"($cyan)  ratatui-spinner — nushell test suite($reset)"
     print $"($cyan)═══════════════════════════════════════════════($reset)"
     print ""
 
@@ -70,7 +70,7 @@ def main [] {
 
     # ── summary ──────────────────────────────────────────────────────
     print $"($cyan)═══════════════════════════════════════════════($reset)"
-    print $"($cyan)  tui-spinner test summary($reset)"
+    print $"($cyan)  ratatui-spinner test summary($reset)"
     print $"($cyan)═══════════════════════════════════════════════($reset)"
     print ""
     for r in $file_results {
