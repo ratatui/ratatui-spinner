@@ -1,4 +1,4 @@
-# tui-spinner — Agent Rules & Best Practices
+# ratatui-spinner — Agent Rules & Best Practices
 
 This file is read by Zed AI and other agents working on this codebase.
 Follow every rule here before writing or suggesting any code.
@@ -7,7 +7,7 @@ Follow every rule here before writing or suggesting any code.
 
 ## 1. Project Overview
 
-`tui-spinner` is a Rust library of animated spinner widgets for
+`ratatui-spinner` is a Rust library of animated spinner widgets for
 [Ratatui](https://ratatui.rs) TUI applications.
 
 **Public widgets (all re-exported from `src/lib.rs`):**

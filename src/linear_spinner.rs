@@ -25,7 +25,7 @@ use ratatui::widgets::{Block, Paragraph, Widget};
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{LinearSpinner, Direction};
+/// use ratatui_spinner::{LinearSpinner, Direction};
 ///
 /// let horizontal = LinearSpinner::new(0).direction(Direction::Horizontal);
 /// let vertical   = LinearSpinner::new(0).direction(Direction::Vertical);
@@ -60,7 +60,7 @@ pub enum Direction {
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{LinearSpinner, Flow};
+/// use ratatui_spinner::{LinearSpinner, Flow};
 ///
 /// let backwards = LinearSpinner::new(0).flow(Flow::Backwards);
 /// ```
@@ -88,7 +88,7 @@ pub enum Flow {
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{LinearSpinner, LinearStyle};
+/// use ratatui_spinner::{LinearSpinner, LinearStyle};
 ///
 /// let spinner = LinearSpinner::new(0).linear_style(LinearStyle::Diamond);
 /// ```
@@ -146,7 +146,7 @@ impl LinearStyle {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{Direction, LinearStyle};
+    /// use ratatui_spinner::{Direction, LinearStyle};
     ///
     /// // Allocate exactly the right width for a 5-slot horizontal spinner:
     /// let style = LinearStyle::Classic;
@@ -209,7 +209,7 @@ impl LinearStyle {
 /// ```no_run
 /// use ratatui::Frame;
 /// use ratatui::layout::Rect;
-/// use tui_spinner::{Direction, LinearStyle, LinearSpinner};
+/// use ratatui_spinner::{Direction, LinearStyle, LinearSpinner};
 ///
 /// fn draw(frame: &mut Frame, area: Rect, tick: u64) {
 ///     // Horizontal ellipsis
@@ -257,7 +257,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::LinearSpinner;
+    /// use ratatui_spinner::LinearSpinner;
     ///
     /// let spinner = LinearSpinner::new(0);
     /// ```
@@ -286,7 +286,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{Direction, LinearSpinner};
+    /// use ratatui_spinner::{Direction, LinearSpinner};
     ///
     /// let vertical = LinearSpinner::new(0).direction(Direction::Vertical);
     /// ```
@@ -304,7 +304,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{Flow, LinearSpinner};
+    /// use ratatui_spinner::{Flow, LinearSpinner};
     ///
     /// let backwards = LinearSpinner::new(0).flow(Flow::Backwards);
     /// ```
@@ -320,7 +320,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{LinearStyle, LinearSpinner};
+    /// use ratatui_spinner::{LinearStyle, LinearSpinner};
     ///
     /// let spinner = LinearSpinner::new(0).linear_style(LinearStyle::Square);
     /// ```
@@ -338,7 +338,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::LinearSpinner;
+    /// use ratatui_spinner::LinearSpinner;
     ///
     /// let spinner = LinearSpinner::new(0).total_slots(5);
     /// ```
@@ -357,7 +357,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::LinearSpinner;
+    /// use ratatui_spinner::LinearSpinner;
     ///
     /// let spinner = LinearSpinner::new(0).lit_slots(1);
     /// ```
@@ -375,7 +375,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::LinearSpinner;
+    /// use ratatui_spinner::LinearSpinner;
     ///
     /// let fast = LinearSpinner::new(0).ticks_per_step(1);
     /// ```
@@ -391,7 +391,7 @@ impl<'a> LinearSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::LinearSpinner;
+    /// use ratatui_spinner::LinearSpinner;
     ///
     /// let spinner = LinearSpinner::new(0).active_color(Color::Cyan);
     /// ```
@@ -407,7 +407,7 @@ impl<'a> LinearSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::LinearSpinner;
+    /// use ratatui_spinner::LinearSpinner;
     ///
     /// let spinner = LinearSpinner::new(0).inactive_color(Color::DarkGray);
     /// ```
@@ -423,7 +423,7 @@ impl<'a> LinearSpinner<'a> {
     ///
     /// ```
     /// use ratatui::widgets::Block;
-    /// use tui_spinner::LinearSpinner;
+    /// use ratatui_spinner::LinearSpinner;
     ///
     /// let spinner = LinearSpinner::new(0).block(Block::bordered().title("Loading"));
     /// ```

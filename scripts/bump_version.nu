@@ -13,7 +13,7 @@ def main [
     let cyan = (ansi cyan)
 
     print $"($cyan)═══════════════════════════════════════════════($reset)"
-    print $"($cyan)  tui-spinner version bump($reset)"
+    print $"($cyan)  ratatui-spinner version bump($reset)"
     print $"($cyan)═══════════════════════════════════════════════($reset)"
 
     # ── validate version format ──────────────────────────────────────

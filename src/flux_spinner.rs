@@ -30,7 +30,7 @@
 //! use ratatui::style::Color;
 //! use ratatui::Frame;
 //! use ratatui::layout::Rect;
-//! use tui_spinner::{FluxSpinner, Spin};
+//! use ratatui_spinner::{FluxSpinner, Spin};
 //!
 //! fn draw(frame: &mut Frame, area: Rect, tick: u64) {
 //!     // Single-character status-bar spinner (clockwise, default)
@@ -89,7 +89,7 @@ use crate::Spin;
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{FluxSpinner, FluxFrames};
+/// use ratatui_spinner::{FluxSpinner, FluxFrames};
 ///
 /// let braille = FluxSpinner::new(0);  // BRAILLE is the default
 /// let orbit   = FluxSpinner::new(0).frames(FluxFrames::ORBIT);
@@ -246,7 +246,7 @@ impl FluxFrames {
 /// # Examples
 ///
 /// ```
-/// use tui_spinner::{FluxFrames, FluxSpinner, Spin};
+/// use ratatui_spinner::{FluxFrames, FluxSpinner, Spin};
 ///
 /// // Minimal 1×1 clockwise spinner
 /// let s = FluxSpinner::new(42);
@@ -271,7 +271,7 @@ impl FluxFrames {
 /// ```
 /// use ratatui::style::Color;
 /// use ratatui::widgets::{Cell, Paragraph};
-/// use tui_spinner::{FluxSpinner, Spin};
+/// use ratatui_spinner::{FluxSpinner, Spin};
 ///
 /// let spinner = FluxSpinner::new(3)
 ///     .width(12)
@@ -290,7 +290,7 @@ impl FluxFrames {
 /// ```
 /// use ratatui::text::Line;
 /// use ratatui::widgets::Cell;
-/// use tui_spinner::FluxSpinner;
+/// use ratatui_spinner::FluxSpinner;
 ///
 /// let spinner = FluxSpinner::new(3).width(12);
 /// let mut lines: Vec<Line> = vec![Line::from("The cell content")];
@@ -331,7 +331,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// let s = FluxSpinner::new(0);
     /// ```
@@ -357,7 +357,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// let wide = FluxSpinner::new(0).width(6);
     /// ```
@@ -372,7 +372,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// let tall = FluxSpinner::new(0).height(3);
     /// ```
@@ -389,7 +389,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{FluxSpinner, Spin};
+    /// use ratatui_spinner::{FluxSpinner, Spin};
     ///
     /// let cw  = FluxSpinner::new(0).spin(Spin::Clockwise);
     /// let ccw = FluxSpinner::new(0).spin(Spin::CounterClockwise);
@@ -406,7 +406,7 @@ impl<'a> FluxSpinner<'a> {
     ///
     /// ```
     /// use ratatui::style::Color;
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// let s = FluxSpinner::new(0).color(Color::White);
     /// ```
@@ -421,7 +421,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// let slow = FluxSpinner::new(0).ticks_per_step(4);
     /// ```
@@ -445,7 +445,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// let sync = FluxSpinner::new(0).width(4).phase_step(0);
     /// let wave = FluxSpinner::new(0).width(4).phase_step(1);
@@ -465,7 +465,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::{FluxSpinner, FluxFrames};
+    /// use ratatui_spinner::{FluxSpinner, FluxFrames};
     ///
     /// let orbit  = FluxSpinner::new(0).frames(FluxFrames::ORBIT);
     /// let line   = FluxSpinner::new(0).frames(FluxFrames::LINE);
@@ -483,7 +483,7 @@ impl<'a> FluxSpinner<'a> {
     ///
     /// ```
     /// use ratatui::widgets::Block;
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// let s = FluxSpinner::new(0).block(Block::bordered().title("Indexing…"));
     /// ```
@@ -512,7 +512,7 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use tui_spinner::FluxSpinner;
+    /// use ratatui_spinner::FluxSpinner;
     ///
     /// assert_eq!(FluxSpinner::new(0).width(5).height(2).char_size(), (5, 2));
     /// ```

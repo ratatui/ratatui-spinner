@@ -23,8 +23,8 @@ use ratatui::{
     widgets::{Block, BorderType, Padding, Paragraph},
     DefaultTerminal, Frame,
 };
+use ratatui_spinner::{Centre, Spin, SquareSpinner};
 use std::time::{Duration, Instant};
-use tui_spinner::{Centre, Spin, SquareSpinner};
 
 // ── macros ────────────────────────────────────────────────────────────────────
 macro_rules! sty {

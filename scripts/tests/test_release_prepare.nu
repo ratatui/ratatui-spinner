@@ -100,8 +100,8 @@ def main [] {
             fn: {||
                 # Simulate the RELEASE_NOTES.md install-instructions block
                 let version = "0.3.0"
-                let toml_block = $"[dependencies]\ntui-spinner = \"($version)\""
-                assert_str_contains $toml_block "tui-spinner" --msg "install instructions should reference tui-spinner"
+                let toml_block = $"[dependencies]\nratatui-spinner = \"($version)\""
+                assert_str_contains $toml_block "ratatui-spinner" --msg "install instructions should reference ratatui-spinner"
                 assert_str_contains $toml_block $version --msg "install instructions should contain the version"
             }
         },
@@ -109,8 +109,8 @@ def main [] {
             name: "test cargo add instructions contain correct version",
             fn: {||
                 let version = "0.3.0"
-                let cmd = $"cargo add tui-spinner@($version)"
-                assert_str_contains $cmd "tui-spinner@0.3.0" --msg "cargo add command should include package@version"
+                let cmd = $"cargo add ratatui-spinner@($version)"
+                assert_str_contains $cmd "ratatui-spinner@0.3.0" --msg "cargo add command should include package@version"
             }
         },
         {
@@ -131,11 +131,11 @@ def main [] {
             name: "test Cargo.toml version update simulation",
             fn: {||
                 # Simulate what release_prepare does to update the version
-                let sample_toml = "[package]\nname = \"tui-spinner\"\nversion = \"0.1.0\"\nedition = \"2021\"\n"
+                let sample_toml = "[package]\nname = \"ratatui-spinner\"\nversion = \"0.1.0\"\nedition = \"2021\"\n"
                 let new_version = "0.5.0"
                 let updated = ($sample_toml | str replace --regex 'version\s*=\s*"[^"]+"' $'version = "($new_version)"')
                 assert_str_contains $updated $'version = "0.5.0"' --msg "Cargo.toml version should be updated"
-                assert_str_contains $updated 'name = "tui-spinner"' --msg "package name should be preserved"
+                assert_str_contains $updated 'name = "ratatui-spinner"' --msg "package name should be preserved"
                 assert_str_contains $updated 'edition = "2021"' --msg "edition should be preserved"
             }
         },

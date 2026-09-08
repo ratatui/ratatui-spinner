@@ -21,11 +21,11 @@ use ratatui::{
     widgets::{Block, BorderType, Padding, Paragraph},
     DefaultTerminal, Frame,
 };
-use std::time::{Duration, Instant};
-use tui_spinner::{
+use ratatui_spinner::{
     BarMotion, BarSpinner, BarStyle, Centre, CircleSpinner, Direction, LinearSpinner, LinearStyle,
     Spin, SquareSpinner,
 };
+use std::time::{Duration, Instant};
 
 // ── Style macros ──────────────────────────────────────────────────────────────
 
@@ -136,7 +136,7 @@ fn render(frame: &mut Frame, app: &App) {
 
 fn render_header(frame: &mut Frame, area: Rect) {
     let block = Block::bordered()
-        .title(" tui-spinner Demo ")
+        .title(" ratatui-spinner Demo ")
         .title_alignment(Alignment::Center)
         .border_type(BorderType::Rounded)
         .border_style(sty!(Color::Cyan))

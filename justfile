@@ -1,4 +1,4 @@
-# tui-spinner — task runner
+# ratatui-spinner — task runner
 # Install just:      cargo install just
 # Install git-cliff: cargo install git-cliff
 # Install vhs:       brew install vhs  OR  go install github.com/charmbracelet/vhs@latest
@@ -104,7 +104,7 @@ VHS_GENERATED := "examples/vhs/generated"
 # Generate all VHS demo GIFs
 vhs-all: _check-vhs
     @mkdir -p {{ VHS_GENERATED }}
-    @echo "=== tui-spinner VHS Tapes ==="
+    @echo "=== ratatui-spinner VHS Tapes ==="
     @for tape in {{ VHS_DIR }}/*.tape; do \
         echo "▶  $$tape"; \
         vhs "$$tape" || echo "❌ Failed: $$tape"; \
@@ -201,7 +201,7 @@ release-preview: _check-git-cliff
     @echo "Unreleased commits:"
     @git-cliff --unreleased
     @echo ""
-    @echo "Published crate:  tui-spinner"
+    @echo "Local crate:      ratatui-spinner (publication disabled)"
 
 # ── Housekeeping ──────────────────────────────────────────────────────────────
 

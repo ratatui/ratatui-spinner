@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-# Pre-publish readiness check for tui-spinner.
+# Pre-publish readiness check for ratatui-spinner.
 # Verifies formatting, lints, tests, docs, required files, and dry-run publish.
 # Usage: nu scripts/check_publish.nu
 
@@ -11,7 +11,7 @@ def main [] {
     let cyan = (ansi cyan)
 
     print $"($cyan)═══════════════════════════════════════════════($reset)"
-    print $"($cyan)  tui-spinner publish readiness check($reset)"
+    print $"($cyan)  ratatui-spinner publish readiness check($reset)"
     print $"($cyan)═══════════════════════════════════════════════($reset)"
     print ""
 

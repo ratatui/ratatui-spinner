@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 # ──────────────────────────────────────────────────────────────────────────────
-# tui-spinner — Validate release tag
+# ratatui-spinner — Validate release tag
 # ──────────────────────────────────────────────────────────────────────────────
 # Validates that a tag matches the vX.Y.Z pattern and outputs the tag and the
 # bare version string.  Used by CI release workflows so validation logic lives

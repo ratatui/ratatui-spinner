@@ -19,8 +19,8 @@ use ratatui::{
     widgets::{Block, BorderType, Paragraph},
     DefaultTerminal, Frame,
 };
+use ratatui_spinner::{BarMotion, BarOrientation, BarSpinner, BarStyle, Spin};
 use std::time::{Duration, Instant};
-use tui_spinner::{BarMotion, BarOrientation, BarSpinner, BarStyle, Spin};
 
 macro_rules! sty {
     (dim) => {

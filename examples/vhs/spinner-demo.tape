@@ -1,4 +1,4 @@
-# VHS tape for tui-spinner — Full Demo
+# VHS tape for ratatui-spinner — Full Demo
 # Run: vhs examples/vhs/spinner-demo.tape
 
 Output examples/vhs/generated/spinner-demo.gif

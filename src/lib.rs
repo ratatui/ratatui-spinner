@@ -1,4 +1,4 @@
-//! # tui-spinner
+//! # ratatui-spinner
 //!
 //! Customizable animated spinner widgets for [Ratatui](https://github.com/ratatui/ratatui) TUI applications.
 //!
@@ -18,7 +18,7 @@
 //!
 //! ```no_run
 //! use ratatui::style::Color;
-//! use tui_spinner::{
+//! use ratatui_spinner::{
 //!     BarMotion, BarSpinner, BarStyle, Centre, CircleSpinner,
 //!     Direction, FluxFrames, FluxSpinner, Flow, LinearSpinner,
 //!     LinearStyle, RectShape, RectSpinner, Spin, SquareSpinner,
@@ -74,7 +74,7 @@
 //! ```no_run
 //! use ratatui::Frame;
 //! use ratatui::layout::Rect;
-//! use tui_spinner::{BarSpinner, BarMotion, Spin};
+//! use ratatui_spinner::{BarSpinner, BarMotion, Spin};
 //!
 //! struct App { tick: u64 }
 //!

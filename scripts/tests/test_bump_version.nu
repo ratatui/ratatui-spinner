@@ -60,7 +60,7 @@ def main [] {
                 # Simulate the replacement logic on a sample Cargo.toml snippet
                 let sample = "
 [package]
-name = \"tui-spinner\"
+name = \"ratatui-spinner\"
 version = \"0.1.0\"
 edition = \"2021\"
 "
@@ -68,7 +68,7 @@ edition = \"2021\"
                 let updated = ($sample | str replace --regex 'version\s*=\s*"[^"]+"' $'version = "($new_version)"')
                 assert_str_contains $updated $'version = "0.2.0"' --msg "version line should be updated to 0.2.0"
                 # Ensure other fields are preserved
-                assert_str_contains $updated 'name = "tui-spinner"' --msg "package name should be preserved"
+                assert_str_contains $updated 'name = "ratatui-spinner"' --msg "package name should be preserved"
                 assert_str_contains $updated 'edition = "2021"' --msg "edition should be preserved"
             }
         },
@@ -79,7 +79,7 @@ edition = \"2021\"
                 # The regex replaces the first match, which is the package version.
                 let sample = "
 [package]
-name = \"tui-spinner\"
+name = \"ratatui-spinner\"
 version = \"0.1.0\"
 
 [dependencies]

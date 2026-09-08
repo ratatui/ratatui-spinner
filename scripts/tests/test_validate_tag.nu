@@ -1,5 +1,5 @@
 #!/usr/bin/env nu
-# ── tui-spinner · test_validate_tag.nu ──────────────────────────────────────
+# ── ratatui-spinner · test_validate_tag.nu ──────────────────────────────────────
 # Tests for scripts/ci/validate_tag.nu — tag validation and version extraction.
 
 use runner.nu [run_tests, assert_eq, assert_true, assert_false]

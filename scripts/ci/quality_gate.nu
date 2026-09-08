@@ -1,6 +1,6 @@
 #!/usr/bin/env nu
 # ──────────────────────────────────────────────────────────────────────────────
-# tui-spinner — CI Quality Gate
+# ratatui-spinner — CI Quality Gate
 # ──────────────────────────────────────────────────────────────────────────────
 # Runs the full quality-gate sequence used by both CI and release workflows:
 #   1. cargo fmt --check
@@ -34,7 +34,7 @@ def main [
 ] {
     print ""
     print (cyan "══════════════════════════════════════════════════════════")
-    print (cyan "  tui-spinner — Quality Gate")
+    print (cyan "  ratatui-spinner — Quality Gate")
     print (cyan "══════════════════════════════════════════════════════════")
     print ""
 

@@ -1,8 +1,5 @@
-# tui-spinner
+# ratatui-spinner
 
-[![Crates.io](https://img.shields.io/crates/v/tui-spinner?style=flat-square&logo=rust&color=orange)](https://crates.io/crates/tui-spinner)
-[![Docs.rs](https://img.shields.io/docsrs/tui-spinner?style=flat-square&logo=docsdotrs&label=docs.rs)](https://docs.rs/tui-spinner)
-[![Downloads](https://img.shields.io/crates/d/tui-spinner?style=flat-square&label=downloads&color=orange)](https://crates.io/crates/tui-spinner)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
 Customizable spinner widgets for [Ratatui](https://github.com/ratatui/ratatui) TUI applications.
@@ -52,9 +49,11 @@ Customizable spinner widgets for [Ratatui](https://github.com/ratatui/ratatui) T
 
 ## Installation
 
+The migration is unpublished. Use a local checkout while the API is under development:
+
 ```toml
 [dependencies]
-tui-spinner = "0.4"
+ratatui-spinner = { path = "../ratatui-spinner" }
 ```
 
 ---
@@ -63,7 +62,7 @@ tui-spinner = "0.4"
 
 ```rust
 use ratatui::style::Color;
-use tui_spinner::{
+use ratatui_spinner::{
     BarMotion, BarSpinner, BarStyle, Centre, CircleSpinner, Direction, FluxFrames, FluxSpinner,
     Flow, LinearSpinner, LinearStyle, RectShape, RectSpinner, Spin, SquareSpinner,
 };
@@ -149,7 +148,7 @@ with **no special method**:
 ```rust
 use ratatui::style::Color;
 use ratatui::widgets::{Cell, Paragraph};
-use tui_spinner::{FluxSpinner, Spin};
+use ratatui_spinner::{FluxSpinner, Spin};
 
 let spinner = FluxSpinner::new(tick)
     .width(12)
@@ -167,7 +166,7 @@ cell, use `to_lines()` (or `to_text()`):
 ```rust
 use ratatui::text::Line;
 use ratatui::widgets::Cell;
-use tui_spinner::FluxSpinner;
+use ratatui_spinner::FluxSpinner;
 
 let spinner = FluxSpinner::new(tick).width(12);
 let mut lines: Vec<Line> = vec![Line::from("The cell content")];
