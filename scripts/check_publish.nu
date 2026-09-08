@@ -20,9 +20,9 @@ def main [] {
     mut warnings = 0
     mut results: list<string> = []
 
-    # ── 1. cargo fmt --check ─────────────────────────────────────────
+    # ── 1. cargo +nightly fmt --check ─────────────────────────────────────────
     print $"($cyan)▸ checking formatting ...($reset)"
-    let fmt_result = do { cargo fmt --check } | complete
+    let fmt_result = do { cargo +nightly fmt --check } | complete
     if $fmt_result.exit_code == 0 {
         print $"($green)  ✓ formatting ok($reset)"
         $passed = $passed + 1

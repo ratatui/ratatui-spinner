@@ -59,11 +59,11 @@ def main [
     }
     print $"($green)  ✓ Cargo.lock synced($reset)"
 
-    # ── cargo fmt ────────────────────────────────────────────────────
-    print $"($cyan)▸ running cargo fmt ...($reset)"
-    let fmt_result = (do { cargo fmt } | complete)
+    # ── cargo +nightly fmt ────────────────────────────────────────────────────
+    print $"($cyan)▸ running cargo +nightly fmt ...($reset)"
+    let fmt_result = (do { cargo +nightly fmt } | complete)
     if $fmt_result.exit_code != 0 {
-        print $"($red)  ✗ cargo fmt failed($reset)"
+        print $"($red)  ✗ cargo +nightly fmt failed($reset)"
         print $"($red)    ($fmt_result.stderr | str trim)($reset)"
         exit 1
     }

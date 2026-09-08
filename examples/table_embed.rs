@@ -8,8 +8,8 @@
 //! Two techniques are shown:
 //!
 //! - **`Cell::from(&spinner)`** — the idiomatic one-liner (uses `Into<Text>`).
-//! - **`to_lines()`** — when the spinner rows are combined with other text in
-//!   the same cell (see the "Building" row).
+//! - **`to_lines()`** — when the spinner rows are combined with other text in the same cell (see
+//!   the "Building" row).
 //!
 //! `BarSpinner` has no intrinsic size, so it uses `to_text(width, height)`.
 //!
@@ -17,19 +17,18 @@
 //!
 //! Run with: `cargo run --example table_embed`
 
+use std::time::{Duration, Instant};
+
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
-use ratatui::{
-    layout::{Alignment, Constraint, Layout, Rect},
-    style::{Color, Modifier, Style},
-    text::{Line, Span},
-    widgets::{Block, BorderType, Cell, Paragraph, Row, Table},
-    DefaultTerminal, Frame,
-};
+use ratatui::layout::{Alignment, Constraint, Layout, Rect};
+use ratatui::style::{Color, Modifier, Style};
+use ratatui::text::{Line, Span};
+use ratatui::widgets::{Block, BorderType, Cell, Paragraph, Row, Table};
+use ratatui::{DefaultTerminal, Frame};
 use ratatui_spinner::{
     BarSpinner, CircleSpinner, Direction, FluxSpinner, LinearSpinner, Spin, SquareSpinner,
 };
-use std::time::{Duration, Instant};
 
 // ── App ───────────────────────────────────────────────────────────────────────
 

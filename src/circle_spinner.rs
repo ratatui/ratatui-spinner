@@ -4,37 +4,34 @@
 //!
 //! ## How it works
 //!
-//! 1. The circle perimeter is computed with the midpoint circle algorithm.
-//!    Dot coordinates are stored as `(row, col)` in a 1:1 dot pitch — one
-//!    braille dot column is one unit wide, one braille dot row is one unit
-//!    tall.  Because each braille character packs 2 dot-cols horizontally
-//!    and 4 dot-rows vertically, and terminal cells are ~2× taller than
-//!    wide, these two factors cancel exactly: 1 dot-col pixel width =
-//!    `cell_w/2`, 1 dot-row pixel height = `cell_h/4` = `cell_w/2`.  So a 1:1
-//!    dot pitch produces a visually round circle.
+//! 1. The circle perimeter is computed with the midpoint circle algorithm. Dot coordinates are
+//!    stored as `(row, col)` in a 1:1 dot pitch — one braille dot column is one unit wide, one
+//!    braille dot row is one unit tall.  Because each braille character packs 2 dot-cols
+//!    horizontally and 4 dot-rows vertically, and terminal cells are ~2× taller than wide, these
+//!    two factors cancel exactly: 1 dot-col pixel width = `cell_w/2`, 1 dot-row pixel height =
+//!    `cell_h/4` = `cell_w/2`.  So a 1:1 dot pitch produces a visually round circle.
 //!
 //! 2. The perimeter dots are sorted clockwise (12-o'clock first).
 //!
-//! 3. A boolean dot-grid is allocated to the bounding box of the circle.
-//!    No interior fill — only the perimeter ring is ever drawn.
+//! 3. A boolean dot-grid is allocated to the bounding box of the circle. No interior fill — only
+//!    the perimeter ring is ever drawn.
 //!
-//! 4. Head and tail indices step through the perimeter list each `walk()`
-//!    call: head sets its dot `true`, tail clears its dot `false`.  This
-//!    produces the travelling comet arc identical to [`crate::RectSpinner`].
+//! 4. Head and tail indices step through the perimeter list each `walk()` call: head sets its dot
+//!    `true`, tail clears its dot `false`.  This produces the travelling comet arc identical to
+//!    [`crate::RectSpinner`].
 //!
-//! 5. The grid is packed into braille bytes and rendered as [`Line`]s.
-//!    Arc dots use `arc_color`; the dim remainder of the ring uses
-//!    `dim_color`.
+//! 5. The grid is packed into braille bytes and rendered as [`Line`]s. Arc dots use `arc_color`;
+//!    the dim remainder of the ring uses `dim_color`.
 
 use std::collections::HashSet;
-
-use crate::rect_spinner::Spin;
 
 use ratatui::buffer::Buffer;
 use ratatui::layout::{Alignment, Rect};
 use ratatui::style::{Color, Style};
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, Widget};
+
+use crate::rect_spinner::Spin;
 
 // ── Braille constants ─────────────────────────────────────────────────────────
 
@@ -336,9 +333,9 @@ impl CircleEngine {
 /// # Examples
 ///
 /// ```no_run
+/// use ratatui::layout::Rect;
 /// use ratatui::style::Color;
 /// use ratatui::Frame;
-/// use ratatui::layout::Rect;
 /// use ratatui_spinner::CircleSpinner;
 ///
 /// fn draw(frame: &mut Frame, area: Rect, tick: u64) {
@@ -544,11 +541,12 @@ impl Widget for &CircleSpinner<'_> {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
-    use crate::rect_spinner::Spin;
     use ratatui::buffer::Buffer;
     use ratatui::layout::Rect;
     use ratatui::widgets::Widget;
+
+    use super::*;
+    use crate::rect_spinner::Spin;
 
     // ── Perimeter geometry ────────────────────────────────────────────────────
 

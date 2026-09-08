@@ -19,10 +19,10 @@
 //!
 //! ## How it works
 //!
-//! 1. A `width × height` character grid is rendered; arc columns use the
-//!    full-dot glyph `⣿` in `arc_color`, dim columns use `⣀` in `dim_color`.
-//! 2. The three outermost columns on each arc edge use the fade ramp
-//!    `⠉ ⠛ ⠿` so the arc blends into the track.
+//! 1. A `width × height` character grid is rendered; arc columns use the full-dot glyph `⣿` in
+//!    `arc_color`, dim columns use `⣀` in `dim_color`.
+//! 2. The three outermost columns on each arc edge use the fade ramp `⠉ ⠛ ⠿` so the arc blends into
+//!    the track.
 //! 3. The arc window advances one column per step and reverses at each end.
 
 use ratatui::buffer::Buffer;
@@ -66,10 +66,10 @@ const DIM_BYTE: u8 = 0xC0;
 /// ```
 /// use ratatui_spinner::{BarSpinner, BarTrack};
 ///
-/// let rail  = BarSpinner::new(0).track(BarTrack::Rail);    // ⣀ default
-/// let solid = BarSpinner::new(0).track(BarTrack::Full);    // ⣿ solid track
-/// let float = BarSpinner::new(0).track(BarTrack::Empty);   // ⠀ no track
-/// let dot   = BarSpinner::new(0).track(BarTrack::Custom(0x09)); // ⠉ top-row
+/// let rail = BarSpinner::new(0).track(BarTrack::Rail); // ⣀ default
+/// let solid = BarSpinner::new(0).track(BarTrack::Full); // ⣿ solid track
+/// let float = BarSpinner::new(0).track(BarTrack::Empty); // ⠀ no track
+/// let dot = BarSpinner::new(0).track(BarTrack::Custom(0x09)); // ⠉ top-row
 /// ```
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum BarTrack {
@@ -128,9 +128,9 @@ impl BarTrack {
 /// ```
 /// use ratatui_spinner::{BarSpinner, BarStyle};
 ///
-/// let braille = BarSpinner::new(0);                                    // default
-/// let block   = BarSpinner::new(0).bar_style(BarStyle::Block);
-/// let dot     = BarSpinner::new(0).bar_style(BarStyle::Dot);
+/// let braille = BarSpinner::new(0); // default
+/// let block = BarSpinner::new(0).bar_style(BarStyle::Block);
+/// let dot = BarSpinner::new(0).bar_style(BarStyle::Dot);
 /// ```
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum BarStyle {
@@ -214,13 +214,15 @@ impl BarStyle {
 /// # Examples
 ///
 /// ```
-/// use ratatui_spinner::{BarSpinner, BarMotion, Spin};
+/// use ratatui_spinner::{BarMotion, BarSpinner, Spin};
 ///
 /// // Default ping-pong
 /// let bounce = BarSpinner::new(0).motion(BarMotion::Bounce);
 ///
 /// // Continuous left-to-right sweep
-/// let sweep = BarSpinner::new(0).spin(Spin::Clockwise).motion(BarMotion::Loop);
+/// let sweep = BarSpinner::new(0)
+///     .spin(Spin::Clockwise)
+///     .motion(BarMotion::Loop);
 ///
 /// // Converge from both edges
 /// let squeeze = BarSpinner::new(0).motion(BarMotion::Squeeze);
@@ -253,7 +255,7 @@ pub enum BarMotion {
 /// # Examples
 ///
 /// ```
-/// use ratatui_spinner::{BarSpinner, BarOrientation};
+/// use ratatui_spinner::{BarOrientation, BarSpinner};
 ///
 /// let h = BarSpinner::new(0).orientation(BarOrientation::Horizontal);
 /// let v = BarSpinner::new(0).orientation(BarOrientation::Vertical);
@@ -685,9 +687,9 @@ impl VertRectEngine {
 /// # Examples
 ///
 /// ```no_run
+/// use ratatui::layout::Rect;
 /// use ratatui::style::Color;
 /// use ratatui::Frame;
-/// use ratatui::layout::Rect;
 /// use ratatui_spinner::{BarSpinner, BarTrack, Spin};
 ///
 /// fn draw(frame: &mut Frame, area: Rect, tick: u64) {
@@ -854,7 +856,7 @@ impl<'a> BarSpinner<'a> {
     /// use ratatui_spinner::BarSpinner;
     ///
     /// let fixed = BarSpinner::new(0).width(24);
-    /// let auto  = BarSpinner::new(0).width(0); // fills area
+    /// let auto = BarSpinner::new(0).width(0); // fills area
     /// ```
     #[must_use]
     pub fn width(mut self, w: usize) -> Self {
@@ -888,7 +890,7 @@ impl<'a> BarSpinner<'a> {
     /// use ratatui_spinner::BarSpinner;
     ///
     /// let narrow = BarSpinner::new(0).arc_width(6);
-    /// let wide   = BarSpinner::new(0).arc_width(20);
+    /// let wide = BarSpinner::new(0).arc_width(20);
     /// ```
     #[must_use]
     pub fn arc_width(mut self, w: usize) -> Self {
@@ -955,9 +957,9 @@ impl<'a> BarSpinner<'a> {
     /// use ratatui_spinner::BarSpinner;
     ///
     /// // Visible track
-    /// let with_track    = BarSpinner::new(0).dim_color(Color::DarkGray);
+    /// let with_track = BarSpinner::new(0).dim_color(Color::DarkGray);
     /// // Arc floats on empty space
-    /// let no_track      = BarSpinner::new(0).dim_color(Color::Black);
+    /// let no_track = BarSpinner::new(0).dim_color(Color::Black);
     /// ```
     #[must_use]
     pub const fn dim_color(mut self, color: Color) -> Self {
@@ -1011,7 +1013,7 @@ impl<'a> BarSpinner<'a> {
     /// use ratatui_spinner::BarSpinner;
     ///
     /// let sharp = BarSpinner::new(0).fade_width(0);
-    /// let soft  = BarSpinner::new(0).fade_width(3); // default
+    /// let soft = BarSpinner::new(0).fade_width(3); // default
     /// ```
     #[must_use]
     pub fn fade_width(mut self, w: usize) -> Self {
@@ -1057,7 +1059,7 @@ impl<'a> BarSpinner<'a> {
     /// use ratatui_spinner::{BarSpinner, BarStyle};
     ///
     /// let block = BarSpinner::new(0).bar_style(BarStyle::Block);
-    /// let dot   = BarSpinner::new(0).bar_style(BarStyle::Dot);
+    /// let dot = BarSpinner::new(0).bar_style(BarStyle::Dot);
     /// ```
     #[must_use]
     pub fn bar_style(mut self, style: BarStyle) -> Self {
@@ -1069,13 +1071,15 @@ impl<'a> BarSpinner<'a> {
     ///
     /// - [`BarMotion::Bounce`] — reverses at each edge (ping-pong).
     /// - [`BarMotion::Loop`] — wraps around; use with [`Spin`] to set the sweep direction.
-    /// - [`BarMotion::Squeeze`] — two arcs converge from both edges toward the centre then bounce back.
-    /// - [`BarMotion::Radiate`] — two arcs radiate outward from the centre and wrap back continuously.
+    /// - [`BarMotion::Squeeze`] — two arcs converge from both edges toward the centre then bounce
+    ///   back.
+    /// - [`BarMotion::Radiate`] — two arcs radiate outward from the centre and wrap back
+    ///   continuously.
     ///
     /// # Examples
     ///
     /// ```
-    /// use ratatui_spinner::{BarSpinner, BarMotion, Spin};
+    /// use ratatui_spinner::{BarMotion, BarSpinner, Spin};
     ///
     /// // Continuous left-to-right sweep
     /// let sweep = BarSpinner::new(0)
@@ -1106,7 +1110,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use ratatui_spinner::{BarSpinner, BarOrientation};
+    /// use ratatui_spinner::{BarOrientation, BarSpinner};
     ///
     /// let v = BarSpinner::new(0)
     ///     .orientation(BarOrientation::Vertical)
@@ -1129,7 +1133,7 @@ impl<'a> BarSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use ratatui_spinner::{BarSpinner, BarOrientation};
+    /// use ratatui_spinner::{BarOrientation, BarSpinner};
     ///
     /// // Thick horizontal bar (3 rows):
     /// let h = BarSpinner::new(0).thickness(3);
@@ -1153,8 +1157,7 @@ impl<'a> BarSpinner<'a> {
     /// use ratatui::widgets::Block;
     /// use ratatui_spinner::BarSpinner;
     ///
-    /// let spinner = BarSpinner::new(0)
-    ///     .block(Block::bordered().title("Loading…"));
+    /// let spinner = BarSpinner::new(0).block(Block::bordered().title("Loading…"));
     /// ```
     #[must_use]
     pub fn block(mut self, block: Block<'a>) -> Self {
@@ -1333,8 +1336,10 @@ impl Widget for &BarSpinner<'_> {
 
 #[cfg(test)]
 mod tests {
+    use ratatui::backend::TestBackend;
+    use ratatui::Terminal;
+
     use super::*;
-    use ratatui::{backend::TestBackend, Terminal};
 
     // ── Engine: construction ──────────────────────────────────────────────────
 

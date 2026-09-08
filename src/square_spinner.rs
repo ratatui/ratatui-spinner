@@ -7,7 +7,7 @@
 //!
 //! ```no_run
 //! use ratatui::style::Color;
-//! use ratatui_spinner::{SquareSpinner, Spin, Centre};
+//! use ratatui_spinner::{Centre, Spin, SquareSpinner};
 //!
 //! // Filled center, clockwise
 //! let spinner = SquareSpinner::new(42)
@@ -33,10 +33,9 @@ use ratatui::style::{Color, Style};
 use ratatui::text::{Line, Span};
 use ratatui::widgets::{Block, Widget};
 
-use crate::rect_spinner::Spin;
-
 // Re-export Centre so callers can use `ratatui_spinner::Centre`.
 pub use crate::rect_spinner::Centre;
+use crate::rect_spinner::Spin;
 
 // ── Braille constants ─────────────────────────────────────────────────────────
 
@@ -387,7 +386,7 @@ impl SquareEngine {
 ///
 /// ```no_run
 /// use ratatui::style::Color;
-/// use ratatui_spinner::{Centre, SquareSpinner, Spin};
+/// use ratatui_spinner::{Centre, Spin, SquareSpinner};
 ///
 /// let spinner = SquareSpinner::new(42)
 ///     .size(3)
@@ -460,7 +459,7 @@ impl<'a> SquareSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use ratatui_spinner::{SquareSpinner, Spin};
+    /// use ratatui_spinner::{Spin, SquareSpinner};
     ///
     /// let ccw = SquareSpinner::new(0).spin(Spin::CounterClockwise);
     /// ```

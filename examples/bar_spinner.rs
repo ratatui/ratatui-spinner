@@ -10,17 +10,16 @@
 //!
 //! Run with: `cargo run --example bar_spinner`
 
+use std::time::{Duration, Instant};
+
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
-use ratatui::{
-    layout::{Alignment, Constraint, Layout, Rect},
-    style::{Color, Modifier, Style},
-    text::{Line, Span},
-    widgets::{Block, BorderType, Paragraph},
-    DefaultTerminal, Frame,
-};
+use ratatui::layout::{Alignment, Constraint, Layout, Rect};
+use ratatui::style::{Color, Modifier, Style};
+use ratatui::text::{Line, Span};
+use ratatui::widgets::{Block, BorderType, Paragraph};
+use ratatui::{DefaultTerminal, Frame};
 use ratatui_spinner::{BarMotion, BarOrientation, BarSpinner, BarStyle, Spin};
-use std::time::{Duration, Instant};
 
 macro_rules! sty {
     (dim) => {
@@ -34,13 +33,13 @@ macro_rules! sty {
     };
 }
 macro_rules! sp {
-    ($t:expr;dim) => {
+    ($t:expr; dim) => {
         Span::styled($t, sty!(dim))
     };
-    ($t:expr;$c:expr) => {
+    ($t:expr; $c:expr) => {
         Span::styled($t, sty!($c))
     };
-    ($t:expr;$c:expr,b) => {
+    ($t:expr; $c:expr,b) => {
         Span::styled($t, sty!($c, b))
     };
 }

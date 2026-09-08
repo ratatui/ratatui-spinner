@@ -19,9 +19,8 @@
 //! ```no_run
 //! use ratatui::style::Color;
 //! use ratatui_spinner::{
-//!     BarMotion, BarSpinner, BarStyle, Centre, CircleSpinner,
-//!     Direction, FluxFrames, FluxSpinner, Flow, LinearSpinner,
-//!     LinearStyle, RectShape, RectSpinner, Spin, SquareSpinner,
+//!     BarMotion, BarSpinner, BarStyle, Centre, CircleSpinner, Direction, Flow, FluxFrames,
+//!     FluxSpinner, LinearSpinner, LinearStyle, RectShape, RectSpinner, Spin, SquareSpinner,
 //! };
 //!
 //! // Vertical bouncing dot
@@ -72,11 +71,13 @@
 //! counter (incremented once per render frame).  No mutable widget state needed.
 //!
 //! ```no_run
-//! use ratatui::Frame;
 //! use ratatui::layout::Rect;
-//! use ratatui_spinner::{BarSpinner, BarMotion, Spin};
+//! use ratatui::Frame;
+//! use ratatui_spinner::{BarMotion, BarSpinner, Spin};
 //!
-//! struct App { tick: u64 }
+//! struct App {
+//!     tick: u64,
+//! }
 //!
 //! fn draw(frame: &mut Frame, area: Rect, app: &App) {
 //!     frame.render_widget(
