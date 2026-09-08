@@ -103,7 +103,7 @@ def main [
 
     # ── quality gate ─────────────────────────────────────────────────
     print $"($cyan)▸ Quality gate ...($reset)"
-    let fmt_ok = (gate_step "cargo fmt" --cmd "cargo fmt --check")
+    let fmt_ok = (gate_step "cargo +nightly fmt" --cmd "cargo +nightly fmt --check")
     let clippy_ok = (gate_step "cargo clippy" --cmd "cargo clippy -- -D warnings")
     let test_ok = (gate_step "cargo test" --cmd "cargo test")
 

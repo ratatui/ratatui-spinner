@@ -25,8 +25,8 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Install Rust stable + rustfmt
-        uses: dtolnay/rust-toolchain@stable
+      - name: Install Rust nightly + rustfmt
+        uses: dtolnay/rust-toolchain@nightly
         with:
           components: rustfmt
 
@@ -34,7 +34,7 @@ jobs:
         uses: Swatinem/rust-cache@v2
 
       - name: Check formatting
-        run: cargo fmt --check
+        run: cargo +nightly fmt --check
 
   # ── 2. Clippy ────────────────────────────────────────────────────────────────
   clippy:

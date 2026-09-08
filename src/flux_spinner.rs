@@ -27,9 +27,9 @@
 //! ## Usage
 //!
 //! ```no_run
+//! use ratatui::layout::Rect;
 //! use ratatui::style::Color;
 //! use ratatui::Frame;
-//! use ratatui::layout::Rect;
 //! use ratatui_spinner::{FluxSpinner, Spin};
 //!
 //! fn draw(frame: &mut Frame, area: Rect, tick: u64) {
@@ -89,12 +89,12 @@ use crate::Spin;
 /// # Examples
 ///
 /// ```
-/// use ratatui_spinner::{FluxSpinner, FluxFrames};
+/// use ratatui_spinner::{FluxFrames, FluxSpinner};
 ///
-/// let braille = FluxSpinner::new(0);  // BRAILLE is the default
-/// let orbit   = FluxSpinner::new(0).frames(FluxFrames::ORBIT);
-/// let line    = FluxSpinner::new(0).frames(FluxFrames::LINE);
-/// let custom  = FluxSpinner::new(0).frames(&['a', 'b', 'c', 'd']);
+/// let braille = FluxSpinner::new(0); // BRAILLE is the default
+/// let orbit = FluxSpinner::new(0).frames(FluxFrames::ORBIT);
+/// let line = FluxSpinner::new(0).frames(FluxFrames::LINE);
+/// let custom = FluxSpinner::new(0).frames(&['a', 'b', 'c', 'd']);
 /// ```
 pub struct FluxFrames;
 
@@ -391,7 +391,7 @@ impl<'a> FluxSpinner<'a> {
     /// ```
     /// use ratatui_spinner::{FluxSpinner, Spin};
     ///
-    /// let cw  = FluxSpinner::new(0).spin(Spin::Clockwise);
+    /// let cw = FluxSpinner::new(0).spin(Spin::Clockwise);
     /// let ccw = FluxSpinner::new(0).spin(Spin::CounterClockwise);
     /// ```
     #[must_use]
@@ -465,10 +465,10 @@ impl<'a> FluxSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use ratatui_spinner::{FluxSpinner, FluxFrames};
+    /// use ratatui_spinner::{FluxFrames, FluxSpinner};
     ///
-    /// let orbit  = FluxSpinner::new(0).frames(FluxFrames::ORBIT);
-    /// let line   = FluxSpinner::new(0).frames(FluxFrames::LINE);
+    /// let orbit = FluxSpinner::new(0).frames(FluxFrames::ORBIT);
+    /// let line = FluxSpinner::new(0).frames(FluxFrames::LINE);
     /// let custom = FluxSpinner::new(0).frames(&['◐', '◓', '◑', '◒']);
     /// ```
     #[must_use]
@@ -572,8 +572,10 @@ impl Widget for &FluxSpinner<'_> {
 
 #[cfg(test)]
 mod tests {
+    use ratatui::backend::TestBackend;
+    use ratatui::Terminal;
+
     use super::*;
-    use ratatui::{backend::TestBackend, Terminal};
 
     // ── Frame table ───────────────────────────────────────────────────────────
 

@@ -74,11 +74,11 @@ check:
 
 # Format all code
 fmt:
-    cargo fmt
+    cargo +nightly fmt
 
 # Check formatting without modifying files
 fmt-check:
-    cargo fmt --check
+    cargo +nightly fmt --check
 
 # Run clippy
 clippy:
@@ -89,7 +89,7 @@ clippy:
 # Auto-formats first, then verifies no changes remain (catches unstaged format diffs).
 check-all: fmt clippy test test-nu
     @echo "🔍 Verifying formatting is clean…"
-    cargo fmt --check
+    cargo +nightly fmt --check
     @echo "✅ All checks passed!"
 
 # Full pre-release quality gate — everything in check-all plus a release build.

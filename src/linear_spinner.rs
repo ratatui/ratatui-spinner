@@ -2,12 +2,11 @@
 //!
 //! A single [`LinearSpinner`] covers both animation patterns along a straight axis:
 //!
-//! - **[`Direction::Horizontal`]** — a window of lit symbols scrolls left-to-right
-//!   across a row of configurable length, wrapping around. Classic ellipsis effect.
+//! - **[`Direction::Horizontal`]** — a window of lit symbols scrolls left-to-right across a row of
+//!   configurable length, wrapping around. Classic ellipsis effect.
 //!
-//! - **[`Direction::Vertical`]** — a single lit symbol bounces up and down a column
-//!   of configurable height: `0 → 1 → … → n-1 → … → 1 → 0 → …`
-//!   (the "Zed / Copilot" activity indicator pattern).
+//! - **[`Direction::Vertical`]** — a single lit symbol bounces up and down a column of configurable
+//!   height: `0 → 1 → … → n-1 → … → 1 → 0 → …` (the "Zed / Copilot" activity indicator pattern).
 //!
 //! Both directions support the same set of [`LinearStyle`] symbol pairs, so you
 //! can mix and match appearance independently of layout direction.
@@ -25,10 +24,10 @@ use ratatui::widgets::{Block, Paragraph, Widget};
 /// # Examples
 ///
 /// ```
-/// use ratatui_spinner::{LinearSpinner, Direction};
+/// use ratatui_spinner::{Direction, LinearSpinner};
 ///
 /// let horizontal = LinearSpinner::new(0).direction(Direction::Horizontal);
-/// let vertical   = LinearSpinner::new(0).direction(Direction::Vertical);
+/// let vertical = LinearSpinner::new(0).direction(Direction::Vertical);
 /// ```
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum Direction {
@@ -52,15 +51,15 @@ pub enum Direction {
 ///
 /// Controls whether the animation plays forwards (the default) or backwards.
 ///
-/// - [`Flow::Forwards`] — horizontal scrolls left-to-right; vertical bounces
-///   starting upward (index 0 → n-1 → 0 …).
-/// - [`Flow::Backwards`] — horizontal scrolls right-to-left; vertical bounces
-///   starting downward (index n-1 → 0 → n-1 …).
+/// - [`Flow::Forwards`] — horizontal scrolls left-to-right; vertical bounces starting upward (index
+///   0 → n-1 → 0 …).
+/// - [`Flow::Backwards`] — horizontal scrolls right-to-left; vertical bounces starting downward
+///   (index n-1 → 0 → n-1 …).
 ///
 /// # Examples
 ///
 /// ```
-/// use ratatui_spinner::{LinearSpinner, Flow};
+/// use ratatui_spinner::{Flow, LinearSpinner};
 ///
 /// let backwards = LinearSpinner::new(0).flow(Flow::Backwards);
 /// ```
@@ -207,9 +206,9 @@ impl LinearStyle {
 /// # Examples
 ///
 /// ```no_run
-/// use ratatui::Frame;
 /// use ratatui::layout::Rect;
-/// use ratatui_spinner::{Direction, LinearStyle, LinearSpinner};
+/// use ratatui::Frame;
+/// use ratatui_spinner::{Direction, LinearSpinner, LinearStyle};
 ///
 /// fn draw(frame: &mut Frame, area: Rect, tick: u64) {
 ///     // Horizontal ellipsis
@@ -320,7 +319,7 @@ impl<'a> LinearSpinner<'a> {
     /// # Examples
     ///
     /// ```
-    /// use ratatui_spinner::{LinearStyle, LinearSpinner};
+    /// use ratatui_spinner::{LinearSpinner, LinearStyle};
     ///
     /// let spinner = LinearSpinner::new(0).linear_style(LinearStyle::Square);
     /// ```

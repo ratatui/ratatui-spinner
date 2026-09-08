@@ -3,7 +3,7 @@
 # ratatui-spinner — CI Quality Gate
 # ──────────────────────────────────────────────────────────────────────────────
 # Runs the full quality-gate sequence used by both CI and release workflows:
-#   1. cargo fmt --check
+#   1. cargo +nightly fmt --check
 #   2. cargo clippy (deny warnings)
 #   3. cargo test
 #   4. nu script tests
@@ -28,7 +28,7 @@ def step [label: string] {
 }
 
 def main [
-    --skip-fmt   # Skip the cargo fmt check
+    --skip-fmt   # Skip the cargo +nightly fmt check
     --skip-test  # Skip the cargo test suite
     --skip-nu    # Skip the Nushell script tests
 ] {
@@ -42,8 +42,8 @@ def main [
 
     # ── 1. Formatting ─────────────────────────────────────────────────────────
     if not $skip_fmt {
-        step "cargo fmt --check"
-        let result = (do { cargo fmt --check } | complete)
+        step "cargo +nightly fmt --check"
+        let result = (do { cargo +nightly fmt --check } | complete)
         if $result.exit_code != 0 {
             print (red "  ✗ Formatting check failed.")
             if ($result.stderr | str trim | is-not-empty) {
@@ -58,7 +58,7 @@ def main [
         }
         print ""
     } else {
-        print "  ⏭ Skipping cargo fmt"
+        print "  ⏭ Skipping cargo +nightly fmt"
         print ""
     }
 

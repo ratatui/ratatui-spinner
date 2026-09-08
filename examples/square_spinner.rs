@@ -14,17 +14,16 @@
 //!
 //! Run with: `cargo run --example square_spinner`
 
+use std::time::{Duration, Instant};
+
 use color_eyre::Result;
 use crossterm::event::{self, Event, KeyCode};
-use ratatui::{
-    layout::{Alignment, Constraint, Layout, Rect},
-    style::{Color, Modifier, Style},
-    text::{Line, Span},
-    widgets::{Block, BorderType, Padding, Paragraph},
-    DefaultTerminal, Frame,
-};
+use ratatui::layout::{Alignment, Constraint, Layout, Rect};
+use ratatui::style::{Color, Modifier, Style};
+use ratatui::text::{Line, Span};
+use ratatui::widgets::{Block, BorderType, Padding, Paragraph};
+use ratatui::{DefaultTerminal, Frame};
 use ratatui_spinner::{Centre, Spin, SquareSpinner};
-use std::time::{Duration, Instant};
 
 // ── macros ────────────────────────────────────────────────────────────────────
 macro_rules! sty {
@@ -34,7 +33,7 @@ macro_rules! sty {
     ($c:expr) => {
         Style::default().fg($c)
     };
-    ($c:expr, b) => {
+    ($c:expr,b) => {
         Style::default().fg($c).add_modifier(Modifier::BOLD)
     };
 }
@@ -45,7 +44,7 @@ macro_rules! sp {
     ($t:expr; $c:expr) => {
         Span::styled($t, sty!($c))
     };
-    ($t:expr; $c:expr, b) => {
+    ($t:expr; $c:expr,b) => {
         Span::styled($t, sty!($c, b))
     };
 }
