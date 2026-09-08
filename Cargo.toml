@@ -11,11 +11,10 @@ homepage = "https://github.com/sorinirimies/tui-spinner"
 keywords = ["tui", "terminal", "ratatui", "spinner", "widget"]
 categories = ["command-line-interface", "visualization", "rendering", "gui", "graphics"]
 readme = "README.md"
+publish = false
 exclude = [
-    ".gitea/",
     ".github/",
     ".gitattributes",
-    "GITEA_SETUP.md",
     "CHANGELOG.md",
     "cliff.toml",
     "justfile",

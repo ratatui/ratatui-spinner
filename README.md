@@ -186,6 +186,12 @@ be auto), so it takes explicit dimensions instead:
 See [`examples/table_embed.rs`](examples/table_embed.rs) for the full demo
 (`cargo run --example table_embed`).
 
+## Provenance
+
+This is a fork of Sorin Albu-Irimies's
+[`tui-spinner`](https://github.com/sorinirimies/tui-spinner), maintained by the Ratatui project.
+The original code remains MIT-licensed, with its authorship and commit history preserved.
+
 ---
 
 ## Widget Reference
@@ -477,7 +483,9 @@ vhs examples/vhs/spinner-demo.tape
 just vhs-all
 ```
 
+Recordings are generated in `examples/vhs/generated/`.
 GIF files are tracked with **Git LFS** (see `.gitattributes`).
+Use `just lfs-pull` to download LFS objects for the checked-out revision.
 
 ---
 
