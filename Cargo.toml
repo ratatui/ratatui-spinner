@@ -27,10 +27,16 @@ ratatui = { version = "0.30", default-features = false }
 color-eyre = "0.6"
 ratatui = { version = "0.30", features = ["crossterm"] }
 crossterm = "0.29"
+clap = { version = "4", features = ["derive"] }
+ratatui-macros = "0.7"
 
 [lib]
 name = "ratatui_spinner"
 path = "src/lib.rs"
+
+[[example]]
+name = "readme"
+path = "examples/readme/main.rs"
 
 [[example]]
 name = "spinner"
