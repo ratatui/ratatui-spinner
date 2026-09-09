@@ -1,6 +1,6 @@
 # ratatui-spinner
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+[![License: MIT OR Apache-2.0](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue?style=flat-square)](#license)
 
 Customizable spinner widgets for [Ratatui](https://github.com/ratatui/ratatui) TUI applications.
 
@@ -500,4 +500,5 @@ Use `just lfs-pull` to download LFS objects for the checked-out revision.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+This project is licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or the
+[MIT License](LICENSE-MIT), at your option.
