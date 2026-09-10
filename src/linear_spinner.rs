@@ -8,8 +8,7 @@
 //! - **[`Direction::Vertical`]** — a single lit symbol bounces up and down a column of configurable
 //!   height: `0 → 1 → … → n-1 → … → 1 → 0 → …` (the "Zed / Copilot" activity indicator pattern).
 //!
-//! Both directions support the same set of [`LinearStyle`] symbol pairs, so you
-//! can mix and match appearance independently of layout direction.
+//! Both directions use the same [`LinearStyle`] symbol pairs, independent of layout direction.
 
 use ratatui::buffer::Buffer;
 use ratatui::layout::Rect;
@@ -223,6 +222,21 @@ impl LinearStyle {
 ///     );
 /// }
 /// ```
+///
+/// # Configuration
+///
+/// | Builder                                  | Default                   | Purpose                                |
+/// |------------------------------------------|---------------------------|----------------------------------------|
+/// | [`direction`](Self::direction)           | [`Direction::Horizontal`] | Select a row or column                 |
+/// | [`flow`](Self::flow)                     | [`Flow::Forwards`]        | Reverse the animation direction        |
+/// | [`linear_style`](Self::linear_style)     | [`LinearStyle::Classic`]  | Select the symbol pair                 |
+/// | [`total_slots`](Self::total_slots)       | `3`                       | Set the spinner length                 |
+/// | [`lit_slots`](Self::lit_slots)           | `2`                       | Set the horizontal moving-window width |
+/// | [`ticks_per_step`](Self::ticks_per_step) | `3`                       | Hold each step for multiple ticks      |
+/// | [`active_color`](Self::active_color)     | [`Color::White`]          | Style active symbols                   |
+/// | [`inactive_color`](Self::inactive_color) | [`Color::DarkGray`]       | Style inactive symbols                 |
+/// | [`style`](Self::style)                   | [`Style::default()`]      | Set the base widget style              |
+/// | [`block`](Self::block)                   | none                      | Render inside a [`Block`]              |
 #[derive(Debug, Clone, PartialEq)]
 pub struct LinearSpinner<'a> {
     /// Monotonically increasing frame counter.

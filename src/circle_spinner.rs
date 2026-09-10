@@ -314,7 +314,7 @@ impl CircleEngine {
 
 // ── Public widget ─────────────────────────────────────────────────────────────
 
-/// A spinner whose arc rotates clockwise around a circular braille-dot ring.
+/// A spinner whose arc rotates around a circular braille-dot ring.
 ///
 /// Uses a 1:1 dot pitch which, after braille packing (2 dot-cols per char-col,
 /// 4 dot-rows per char-row) and the ~2× terminal cell aspect ratio, produces a
@@ -348,6 +348,20 @@ impl CircleEngine {
 ///     );
 /// }
 /// ```
+///
+/// # Configuration
+///
+/// | Builder                                  | Default                 | Purpose                       |
+/// |------------------------------------------|-------------------------|-------------------------------|
+/// | [`radius`](Self::radius)                 | `4`                     | Set radius in braille dots    |
+/// | [`arc_len`](Self::arc_len)               | `0` (automatic quarter) | Set bright-arc length in dots |
+/// | [`spin`](Self::spin)                     | [`Spin::Clockwise`]     | Set rotation direction        |
+/// | [`ticks_per_step`](Self::ticks_per_step) | `1`                     | Hold each arc position        |
+/// | [`arc_color`](Self::arc_color)           | [`Color::White`]        | Style the bright arc          |
+/// | [`dim_color`](Self::dim_color)           | [`Color::DarkGray`]     | Style the dim ring            |
+/// | [`alignment`](Self::alignment)           | [`Alignment::Left`]     | Align the circle in its area  |
+/// | [`style`](Self::style)                   | [`Style::default()`]    | Set the base widget style     |
+/// | [`block`](Self::block)                   | none                    | Render inside a [`Block`]     |
 #[derive(Debug, Clone)]
 pub struct CircleSpinner<'a> {
     tick: u64,
