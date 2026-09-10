@@ -1,0 +1,12 @@
+config:
+  # https://github.com/DavidAnson/markdownlint/blob/main/doc/md013.md
+  line-length:
+    line_length: 100
+    code_blocks: false
+    tables: false
+  # https://github.com/DavidAnson/markdownlint/blob/main/doc/md060.md
+  table-column-style:
+    style: aligned
+ignores:
+  - "**/CHANGELOG.md"
+  - "target/**"
