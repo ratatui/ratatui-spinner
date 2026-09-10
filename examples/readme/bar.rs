@@ -153,7 +153,7 @@ fn render_vertical_styles(frame: &mut Frame, area: Rect, tick: u64) {
     let rows: [Rect; 2] = rows.areas(area);
     let columns = Layout::horizontal([9, 8, 7, 7, 10, 8, 6, 7]);
 
-    for (styles, row) in zip(STYLES.chunks_exact(8), rows) {
+    for (styles, row) in zip(STYLES.as_chunks::<8>().0, rows) {
         let tiles: [Rect; 8] = columns.areas(row);
 
         for ((style, color, name, symbols), tile) in zip(styles.iter().copied(), tiles) {

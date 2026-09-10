@@ -27,7 +27,7 @@ fn render_radii(frame: &mut Frame, area: Rect, tick: u64) {
         ("r=8", 8, Color::LightCyan),
     ];
     let rows = [(small, 3), (large, 5)];
-    for (radii, (row, height)) in zip(radii.chunks_exact(3), rows) {
+    for (radii, (row, height)) in zip(radii.as_chunks::<3>().0, rows) {
         let tiles: [Rect; 3] = columns.areas(row);
 
         for ((name, radius, color), tile) in zip(radii.iter().copied(), tiles) {

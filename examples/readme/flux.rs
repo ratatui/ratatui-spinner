@@ -46,7 +46,7 @@ fn render_presets(frame: &mut Frame, area: Rect, tick: u64) {
     let rows: [Rect; 7] = Layout::vertical([2; 7]).areas(area);
     let columns = Layout::horizontal([16; 3]).spacing(1);
 
-    for (presets, row) in zip(PRESETS.chunks_exact(3), rows) {
+    for (presets, row) in zip(PRESETS.as_chunks::<3>().0, rows) {
         let tiles: [Rect; 3] = columns.areas(row);
 
         for ((frames, color, name, symbols), tile) in zip(presets.iter().copied(), tiles) {
