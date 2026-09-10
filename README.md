@@ -483,26 +483,8 @@ and commit history preserved.
 
 ## Development
 
-Run `just check-all` for formatting, Clippy, unit tests, doc tests, and
-documentation checks. Formatting uses `cargo +nightly fmt` with Ratatui
-conventions. Builds and tests use stable Rust; documentation uses nightly to
-check the docs.rs configuration.
-
-Run `just vhs-all` to regenerate and losslessly optimize every gallery, or record one scene
-directly. GIF files are tracked with Git LFS; use `just lfs-pull` after a fresh clone.
-
-```sh
-just vhs-tape linear-horizontal
-```
-
-The recording commands require [VHS](https://github.com/charmbracelet/vhs).
-
-Run `just package` to verify the crate archive without publishing and `just changelog-preview` to
-preview release notes. See [AGENTS.md](AGENTS.md) for the underlying Cargo commands and repository
-guidance.
-
-Publication remains disabled while the `tui-spinner` fork is prepared as
-`ratatui-spinner`.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development setup, checks, examples, visual recording
+guidance, and package and changelog previews.
 
 ## License
 
