@@ -50,9 +50,9 @@ pub enum Direction {
 ///
 /// Controls whether the animation plays forwards (the default) or backwards.
 ///
-/// - [`Flow::Forwards`] — horizontal scrolls left-to-right; vertical bounces starting upward (index
-///   0 → n-1 → 0 …).
-/// - [`Flow::Backwards`] — horizontal scrolls right-to-left; vertical bounces starting downward
+/// - [`Flow::Forwards`] — horizontal scrolls left-to-right; vertical bounces starting downward
+///   (index 0 → n-1 → 0 …).
+/// - [`Flow::Backwards`] — horizontal scrolls right-to-left; vertical bounces starting upward
 ///   (index n-1 → 0 → n-1 …).
 ///
 /// # Examples
@@ -172,17 +172,17 @@ impl LinearStyle {
 
 /// A linear spinner that animates either horizontally or vertically.
 ///
-/// Pass a monotonically increasing `tick` counter (typically incremented once
-/// per render frame) and call `.direction()`, `.linear_style()`, and colour
-/// methods to customise the appearance.
+/// Pass an application-owned `tick` counter, advanced on an animation timer, and call
+/// `.direction()`, `.linear_style()`, and colour methods to customise the appearance.
+/// Redraws can reuse the same tick; see the [crate guide](crate#rendering).
 ///
 /// # Horizontal (default)
 ///
 /// ```text
 /// tick  0–2 : ●●·
 /// tick  3–5 : ·●●
-/// tick  6–8 : ··●   (window wraps)
-/// tick  9–11: ●··
+/// tick  6–8 : ●·●   (window wraps)
+/// tick  9–11: ●●·
 /// ```
 ///
 /// # Vertical (bounce)

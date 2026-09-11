@@ -708,7 +708,7 @@ impl VertRectEngine {
 /// | Builder                                  | Default                        | Purpose                                     |
 /// |------------------------------------------|--------------------------------|---------------------------------------------|
 /// | [`width`](Self::width)                   | `0` (fill area)                | Set a fixed horizontal length               |
-/// | [`height`](Self::height)                 | `1`                            | Set vertical length or horizontal height    |
+/// | [`height`](Self::height)                 | `1`                            | Set horizontal bar height                   |
 /// | [`orientation`](Self::orientation)       | [`BarOrientation::Horizontal`] | Select the motion axis                      |
 /// | [`thickness`](Self::thickness)           | `0` (axis default)             | Set cross-axis thickness                    |
 /// | [`arc_width`](Self::arc_width)           | `0` (automatic)                | Set the bright arc length                   |
@@ -882,10 +882,12 @@ impl<'a> BarSpinner<'a> {
         self
     }
 
-    /// Sets the height in character rows (minimum 1, default 1).
+    /// Sets the horizontal bar height in character rows (minimum 1, default 1).
     ///
     /// Use `1` for a thin Zed-style bar or `2`–`3` for a thicker
-    /// Claude-style block.
+    /// Claude-style block. A nonzero [`thickness`](Self::thickness) overrides this value.
+    /// Vertical bars use the available area height when rendered as a widget, or the height
+    /// passed to [`to_lines`](Self::to_lines) or [`to_text`](Self::to_text).
     ///
     /// # Examples
     ///
@@ -1197,8 +1199,12 @@ impl<'a> BarSpinner<'a> {
         self
     }
 
-    /// Returns the explicit rendered size `(cols, rows)`, or `None` when the
-    /// width is set to auto (`0`).
+    /// Returns the configured `(cols, rows)`, or `None` when width is auto (`0`).
+    ///
+    /// This reports `width.max(3)` and `height.max(1)`. It does not account for
+    /// [`orientation`](Self::orientation), [`thickness`](Self::thickness), block borders, or
+    /// clipping. It matches the horizontal body size when thickness is zero; vertical length
+    /// depends on the render area or the explicit text-conversion height.
     ///
     /// # Examples
     ///
