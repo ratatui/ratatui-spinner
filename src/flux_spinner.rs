@@ -62,29 +62,29 @@ use crate::Spin;
 /// Pass any preset (or a custom `&'static [char]` slice) to
 /// [`FluxSpinner::frames`] to change the animation glyphs.
 ///
-/// | Preset     | Glyphs                        | Frames | Description                         |
-/// |------------|-------------------------------|--------|-------------------------------------|
-/// | `BRAILLE`  | `⣾ ⣷ ⣯ ⣟ ⡿ ⢿ ⣽ ⣻`     | 8      | Full cell, one dot missing (default)|
-/// | `ORBIT`    | `⠁ ⠈ ⠐ ⠠ ⢀ ⡀ ⠄ ⠂`     | 8      | Single dot orbiting (inverse)       |
-/// | `CLASSIC`  | `⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏` | 10     | Classic braille spinner             |
-/// | `LINE`     | `│ ╱ ─ ╲`                 | 4      | Rotating line                       |
-/// | `BLOCK`    | `▖ ▘ ▝ ▗`                 | 4      | Quarter-block rotation              |
-/// | `ARC`      | `◜ ◝ ◞ ◟`                 | 4      | Quarter-arc rotation                |
-/// | `CLOCK`     | `◷ ◶ ◵ ◴`                     | 4      | Quarter-circle pie slice      |
-/// | `MOON`      | `◓ ◑ ◒ ◐`                     | 4      | Half-circle moon phase        |
-/// | `TRIANGLES` | `▲ ▶ ▼ ◀`                     | 4      | Filled triangle four dirs     |
-/// | `PULSE`     | `⣀ ⣤ ⣶ ⣾ ⣿ ⣾ ⣶ ⣤`         | 8      | Braille fill pulse            |
-/// | `BOUNCE`    | `⠉ ⠒ ⣀ ⠒`                    | 4      | Braille row bouncing top→mid→bottom |
-/// | `HALF`      | `▀ ▐ ▄ ▌`                     | 4      | Half-block rotating clockwise |
-/// | `SQUARE`    | `◰ ◳ ◲ ◱`                     | 4      | White square, one filled quadrant   |
-/// | `DICE`      | `⚀ ⚁ ⚂ ⚃ ⚄ ⚅`               | 6      | Dice faces one to six         |
-/// | `BAR`       | `▁ ▂ ▃ ▄ ▅ ▆ ▇ █`             | 8      | Sub-block growing bar         |
-/// | `CORNERS`     | `┌ ┐ ┘ └`                     | 4      | Box-drawing corners rotate    |
-/// | `CIRCLE_FILL` | `○ ◔ ◑ ◕ ●`                   | 5      | Circle filling clockwise      |
-/// | `PISTON`      | `▁ ▃ ▅ ▇ █ ▇ ▅ ▃`             | 8      | Bouncing bar (repeats)        |
-/// | `STAR`        | `✶ ✷ ✸ ✹`                     | 4      | Braille-asterisk star ramp    |
-/// | `PAIR`        | `⠉ ⠘ ⠰ ⢠ ⣀ ⡄ ⠆ ⠃`         | 8      | Two dots rotating together    |
-/// | `DIAMOND`     | `◇ ◈ ◆ ◈`                     | 4      | Diamond pulse (repeats)       |
+/// | Preset        | Glyphs                | Frames | Description                          |
+/// |---------------|-----------------------|--------|--------------------------------------|
+/// | `BRAILLE`     | `⣾ ⣷ ⣯ ⣟ ⡿ ⢿ ⣽ ⣻`     | 8      | Full cell, one dot missing (default) |
+/// | `ORBIT`       | `⠁ ⠈ ⠐ ⠠ ⢀ ⡀ ⠄ ⠂`     | 8      | Single dot orbiting (inverse)        |
+/// | `CLASSIC`     | `⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏` | 10     | Classic braille spinner              |
+/// | `LINE`        | `│ ╱ ─ ╲`             | 4      | Rotating line                        |
+/// | `BLOCK`       | `▖ ▘ ▝ ▗`             | 4      | Quarter-block rotation               |
+/// | `ARC`         | `◜ ◝ ◞ ◟`             | 4      | Quarter-arc rotation                 |
+/// | `CLOCK`       | `◷ ◶ ◵ ◴`             | 4      | Quarter-circle pie slice             |
+/// | `MOON`        | `◓ ◑ ◒ ◐`             | 4      | Half-circle moon phase               |
+/// | `TRIANGLES`   | `▲ ▶ ▼ ◀`             | 4      | Filled triangle four dirs            |
+/// | `PULSE`       | `⣀ ⣤ ⣶ ⣾ ⣿ ⣾ ⣶ ⣤`     | 8      | Braille fill pulse                   |
+/// | `BOUNCE`      | `⠉ ⠒ ⣀ ⠒`             | 4      | Braille row bouncing top→mid→bottom  |
+/// | `HALF`        | `▀ ▐ ▄ ▌`             | 4      | Half-block rotating clockwise        |
+/// | `SQUARE`      | `◰ ◳ ◲ ◱`             | 4      | White square, one filled quadrant    |
+/// | `DICE`        | `⚀ ⚁ ⚂ ⚃ ⚄ ⚅`         | 6      | Dice faces one to six                |
+/// | `BAR`         | `▁ ▂ ▃ ▄ ▅ ▆ ▇ █`     | 8      | Sub-block growing bar                |
+/// | `CORNERS`     | `┌ ┐ ┘ └`             | 4      | Box-drawing corners rotate           |
+/// | `CIRCLE_FILL` | `○ ◔ ◑ ◕ ●`           | 5      | Circle filling clockwise             |
+/// | `PISTON`      | `▁ ▃ ▅ ▇ █ ▇ ▅ ▃`     | 8      | Bouncing bar (repeats)               |
+/// | `STAR`        | `✶ ✷ ✸ ✹`             | 4      | Braille-asterisk star ramp           |
+/// | `PAIR`        | `⠉ ⠘ ⠰ ⢠ ⣀ ⡄ ⠆ ⠃`     | 8      | Two dots rotating together           |
+/// | `DIAMOND`     | `◇ ◈ ◆ ◈`             | 4      | Diamond pulse (repeats)              |
 ///
 /// # Examples
 ///
@@ -233,15 +233,18 @@ impl FluxFrames {
 ///
 /// # Default values
 ///
-/// | Field            | Default                     |
-/// |------------------|-----------------------------|
-/// | `width`          | `1`                         |
-/// | `height`         | `1`                         |
-/// | `spin`           | [`Spin::Clockwise`]         |
-/// | `color`          | [`Color::Cyan`]             |
-/// | `ticks_per_step` | `1`                         |
-/// | `phase_step`     | `1`                         |
-/// | `frames`         | [`FluxFrames::BRAILLE`]     |
+/// | Field            | Default                 |
+/// |------------------|-------------------------|
+/// | `width`          | `1`                     |
+/// | `height`         | `1`                     |
+/// | `spin`           | [`Spin::Clockwise`]     |
+/// | `color`          | [`Color::Cyan`]         |
+/// | `ticks_per_step` | `1`                     |
+/// | `phase_step`     | `1`                     |
+/// | `frames`         | [`FluxFrames::BRAILLE`] |
+/// | `alignment`      | [`Alignment::Left`]     |
+/// | `style`          | [`Style::default()`]    |
+/// | `block`          | none                    |
 ///
 /// # Examples
 ///
@@ -433,12 +436,12 @@ impl<'a> FluxSpinner<'a> {
 
     /// Sets the frame offset between adjacent cells (default 1).
     ///
-    /// | value | effect                                               |
-    /// |-------|------------------------------------------------------|
-    /// | `0`   | All cells synchronised — a uniform pulsing block     |
-    /// | `1`   | Smooth diagonal wave (default)                       |
-    /// | `2`   | Faster / wider wave                                  |
-    /// | `4`   | Anti-phase: neighbouring cells spin opposite (`⣾`/`⡿`)|
+    /// | value | effect                                                 |
+    /// |-------|--------------------------------------------------------|
+    /// | `0`   | All cells synchronised — a uniform pulsing block       |
+    /// | `1`   | Smooth diagonal wave (default)                         |
+    /// | `2`   | Faster / wider wave                                    |
+    /// | `4`   | Anti-phase: neighbouring cells spin opposite (`⣾`/`⡿`) |
     ///
     /// The wave travels in the [`spin`](FluxSpinner::spin) direction.
     ///

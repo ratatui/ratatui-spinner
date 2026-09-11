@@ -54,12 +54,12 @@ const DIM_BYTE: u8 = 0xC0;
 
 /// Controls the appearance of the dim background track behind the bouncing arc.
 ///
-/// | Variant | Byte | Glyph | Effect |
-/// |---------|------|-------|--------|
-/// | `Rail`  | `0xC0` | `⣀` | Bottom-two-dot baseline — subtle, default |
-/// | `Full`  | `0xFF` | `⣿` | Full-density track in `dim_color` |
-/// | `Empty` | `0x00` | `⠀` | Invisible — arc floats on empty space |
-/// | `Custom(u8)` | any | any braille | User-defined braille byte |
+/// | Variant      | Byte   | Glyph       | Effect                                    |
+/// |--------------|--------|-------------|-------------------------------------------|
+/// | `Rail`       | `0xC0` | `⣀`         | Bottom-two-dot baseline — subtle, default |
+/// | `Full`       | `0xFF` | `⣿`         | Full-density track in `dim_color`         |
+/// | `Empty`      | `0x00` | `⠀`         | Invisible — arc floats on empty space     |
+/// | `Custom(u8)` | any    | any braille | User-defined braille byte                 |
 ///
 /// # Examples
 ///
@@ -104,24 +104,24 @@ impl BarTrack {
 /// single Unicode character for the arc and one for the track, with no
 /// intermediate fade.
 ///
-/// | Variant   | Arc | Track | Notes |
-/// |-----------|-----|-------|-------|
-/// | `Braille` | `⣿` | `⣀`  | Braille density fade (default) |
-/// | `Block`   | `█` | `░`   | Solid / light block |
-/// | `Shade`   | `▓` | `░`   | Dark shade / light block |
-/// | `Dot`     | `●` | `·`   | Filled / middle dot |
-/// | `Diamond` | `◆` | `◇`   | Filled / open diamond |
-/// | `Square`  | `■` | `□`   | Filled / open square |
-/// | `Star`    | `★` | `☆` | Filled / outline star             |
-/// | `Heart`   | `♥` | `♡` | Filled / outline heart            |
-/// | `Arrow`   | `▶` | `▷` | Solid / outline right triangle    |
-/// | `Circle`  | `◉` | `○` | Fisheye / open circle             |
-/// | `Spark`   | `✦` | `✧` | Black / white four-pointed star   |
-/// | `Cross`    | `✚` | `✛` | Heavy / open-centre cross         |
-/// | `Progress` | `▰` | `▱` | Bold progress-bar segments |
-/// | `Thick`    | `━` | `─` | Heavy / thin horizontal line |
-/// | `Wave`     | `≈` | `˜` | Wave / tilde |
-/// | `Pip`      | `▪` | `·` | Small square / middle dot |
+/// | Variant    | Arc | Track | Notes                           |
+/// |------------|-----|-------|---------------------------------|
+/// | `Braille`  | `⣿` | `⣀`   | Braille density fade (default)  |
+/// | `Block`    | `█` | `░`   | Solid / light block             |
+/// | `Shade`    | `▓` | `░`   | Dark shade / light block        |
+/// | `Dot`      | `●` | `·`   | Filled / middle dot             |
+/// | `Diamond`  | `◆` | `◇`   | Filled / open diamond           |
+/// | `Square`   | `■` | `□`   | Filled / open square            |
+/// | `Star`     | `★` | `☆`   | Filled / outline star           |
+/// | `Heart`    | `♥` | `♡`   | Filled / outline heart          |
+/// | `Arrow`    | `▶` | `▷`   | Solid / outline right triangle  |
+/// | `Circle`   | `◉` | `○`   | Fisheye / open circle           |
+/// | `Spark`    | `✦` | `✧`   | Black / white four-pointed star |
+/// | `Cross`    | `✚` | `✛`   | Heavy / open-centre cross       |
+/// | `Progress` | `▰` | `▱`   | Bold progress-bar segments      |
+/// | `Thick`    | `━` | `─`   | Heavy / thin horizontal line    |
+/// | `Wave`     | `≈` | `˜`   | Wave / tilde                    |
+/// | `Pip`      | `▪` | `·`   | Small square / middle dot       |
 ///
 /// # Examples
 ///
@@ -200,12 +200,12 @@ impl BarStyle {
 
 /// Controls how the arc behaves when it reaches the edge of the bar.
 ///
-/// | Variant    | Behaviour |
-/// |------------|----------------------------------------------------------------------|
-/// | `Bounce`   | Reverses at each edge — classic ping-pong (default)                   |
-/// | `Loop`     | Wraps around: when the arc exits one edge it re-enters the other     |
-/// | `Squeeze`  | Two arcs converge from both edges toward the centre then bounce back |
-/// | `Radiate`  | Two arcs radiate outward from the centre and wrap back continuously  |
+/// | Variant   | Behaviour                                                            |
+/// |-----------|----------------------------------------------------------------------|
+/// | `Bounce`  | Reverses at each edge — classic ping-pong (default)                  |
+/// | `Loop`    | Wraps around: when the arc exits one edge it re-enters the other     |
+/// | `Squeeze` | Two arcs converge from both edges toward the centre then bounce back |
+/// | `Radiate` | Two arcs radiate outward from the centre and wrap back continuously  |
 ///
 /// Combined with [`Spin`], `Loop` produces a continuous sweep:
 /// - `Spin::Clockwise` + `Loop` → sweeps left → right endlessly
@@ -247,10 +247,10 @@ pub enum BarMotion {
 
 /// Controls whether the bar slides horizontally or vertically.
 ///
-/// | Variant      | Arc motion        |
-/// |--------------|-------------------|
+/// | Variant      | Arc motion             |
+/// |--------------|------------------------|
 /// | `Horizontal` | left ↔ right (default) |
-/// | `Vertical`   | top ↕ bottom      |
+/// | `Vertical`   | top ↕ bottom           |
 ///
 /// # Examples
 ///
@@ -703,15 +703,33 @@ impl VertRectEngine {
 /// }
 /// ```
 ///
-/// # Field Defaults
+/// # Configuration
 ///
-/// | Field           | Default                     |
-/// |-----------------|-----------------------------||
-/// | `track`         | [`BarTrack::Rail`]          |
-/// | `fade_width`    | `3`                         |
-/// | `arc_byte`      | `0xFF` (`⣿`)               |
-/// | `bar_style`     | [`BarStyle::Braille`]       |
-/// | `motion`        | [`BarMotion::Bounce`]       |
+/// | Builder                                  | Default                        | Purpose                                     |
+/// |------------------------------------------|--------------------------------|---------------------------------------------|
+/// | [`width`](Self::width)                   | `0` (fill area)                | Set a fixed horizontal length               |
+/// | [`height`](Self::height)                 | `1`                            | Set vertical length or horizontal height    |
+/// | [`orientation`](Self::orientation)       | [`BarOrientation::Horizontal`] | Select the motion axis                      |
+/// | [`thickness`](Self::thickness)           | `0` (axis default)             | Set cross-axis thickness                    |
+/// | [`arc_width`](Self::arc_width)           | `0` (automatic)                | Set the bright arc length                   |
+/// | [`motion`](Self::motion)                 | [`BarMotion::Bounce`]          | Set edge behavior                           |
+/// | [`spin`](Self::spin)                     | [`Spin::Clockwise`]            | Select the starting or continuous direction |
+/// | [`bar_style`](Self::bar_style)           | [`BarStyle::Braille`]          | Select arc and track glyphs                 |
+/// | [`track`](Self::track)                   | [`BarTrack::Rail`]             | Select the braille track treatment          |
+/// | [`fade_width`](Self::fade_width)         | `3`                            | Set the braille density-ramp width          |
+/// | [`arc_char`](Self::arc_char)             | `0xFF` (`⣿`)                   | Set a custom braille arc byte               |
+/// | [`ticks_per_step`](Self::ticks_per_step) | `1`                            | Hold each animation step                    |
+/// | [`arc_color`](Self::arc_color)           | [`Color::Cyan`]                | Style the moving arc                        |
+/// | [`dim_color`](Self::dim_color)           | [`Color::DarkGray`]            | Style the track                             |
+/// | [`with_colors`](Self::with_colors)       | —                              | Set both colors together                    |
+/// | [`alignment`](Self::alignment)           | [`Alignment::Left`]            | Align a fixed-size bar                      |
+/// | [`style`](Self::style)                   | [`Style::default()`]           | Set the base widget style                   |
+/// | [`block`](Self::block)                   | none                           | Render inside a [`Block`]                   |
+///
+/// The [`zed`](Self::zed), [`claude`](Self::claude), [`minimal`](Self::minimal), and
+/// [`solid`](Self::solid) constructors set named configurations. Only
+/// [`BarStyle::Braille`] uses [`fade_width`](Self::fade_width), [`arc_char`](Self::arc_char), and
+/// [`BarTrack`]; symbol styles use the fixed pairs documented on [`BarStyle`].
 #[derive(Debug, Clone)]
 pub struct BarSpinner<'a> {
     tick: u64,
@@ -1026,12 +1044,12 @@ impl<'a> BarSpinner<'a> {
     /// Use any braille byte to change the arc density.  The fade ramp always
     /// starts from `⠉` and tapers *up to* this value.
     ///
-    /// | Example byte | Glyph | Dots |
-    /// |---|---|---|
-    /// | `0xFF` | `⣿` | 8 — full (default) |
-    /// | `0x7F` | `⡿` | 7 |
-    /// | `0x3F` | `⠿` | 6 |
-    /// | `0x1B` | `⠛` | 4 |
+    /// | Example byte | Glyph | Dots               |
+    /// |--------------|-------|--------------------|
+    /// | `0xFF`       | `⣿`   | 8 — full (default) |
+    /// | `0x7F`       | `⡿`   | 7                  |
+    /// | `0x3F`       | `⠿`   | 6                  |
+    /// | `0x1B`       | `⠛`   | 4                  |
     ///
     /// # Examples
     ///
