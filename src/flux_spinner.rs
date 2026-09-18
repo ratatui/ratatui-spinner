@@ -231,6 +231,15 @@ impl FluxFrames {
 /// staggered in time, producing a smooth diagonal wave across the spinner
 /// block.  The wave direction follows the spin direction.
 ///
+/// With the default frames and speed, a six-column wave advances as follows:
+///
+/// ```text
+/// width = 6, phase_step = 1, Clockwise
+/// ⣾⣷⣯⣟⡿⢿   (tick 0)
+/// ⣷⣯⣟⡿⢿⣽   (tick 1)
+/// ⣯⣟⡿⢿⣽⣻   (tick 2)
+/// ```
+///
 /// # Default values
 ///
 /// | Field            | Default                 |

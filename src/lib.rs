@@ -103,8 +103,10 @@
 //! - [`FluxSpinner::char_size`], [`CircleSpinner::char_size`], and [`SquareSpinner::char_size`]
 //!   return exact dimensions in terminal cells.
 //! - [`BarSpinner::char_size`] returns `None` while its width is the default `0`, because widget
-//!   rendering then fills the available width. A positive [`BarSpinner::width`] makes its size
-//!   explicit.
+//!   rendering then fills the available width. A positive [`BarSpinner::width`] makes the query
+//!   return configured dimensions, without accounting for orientation or thickness. Vertical bars
+//!   use the render area height for their length; `height` controls horizontal bar height, and a
+//!   nonzero `thickness` overrides the cross-axis dimension.
 //! - `RectSpinner` currently has no public size-query method; allocate space for the selected
 //!   [`RectShape`] and let Ratatui clip any excess.
 //!

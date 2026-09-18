@@ -101,6 +101,14 @@ fn render(frame: &mut Frame, area: Rect, tick: u64) {
 Advance `tick` and request a redraw on the application's animation timer. The [crate guide][guide]
 covers animation timing, sizing, widget selection, and text conversion.
 
+## Embedding in text widgets
+
+Spinner frames can also appear in table cells and other text widgets. The
+[text embedding guide][text-guide] covers direct conversions and the explicit dimensions needed
+by `BarSpinner`.
+
+![Spinners converted to text and embedded in table cells](examples/vhs/generated/text.gif)
+
 ## Documentation and examples
 
 - [Crate guide][guide]: animation lifecycle, first integration, sizing, and text embedding.
@@ -165,3 +173,4 @@ MIT — see [LICENSE](LICENSE).
 [square]: https://docs.rs/ratatui-spinner/latest/ratatui_spinner/struct.SquareSpinner.html
 [square-size]: https://docs.rs/ratatui-spinner/latest/ratatui_spinner/struct.SquareSpinner.html#method.char_size
 [table-example]: examples/table_embed.rs
+[text-guide]: https://docs.rs/ratatui-spinner/latest/ratatui_spinner/#embedding-frames-in-text-widgets
