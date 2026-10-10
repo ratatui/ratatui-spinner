@@ -1,6 +1,6 @@
 # ratatui-spinner
 
-[![MIT License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
+[![License: MIT OR Apache-2.0](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue?style=flat-square)](#license)
 
 Customizable, stateless spinner widgets for
 [Ratatui](https://github.com/ratatui/ratatui) applications.
@@ -139,7 +139,8 @@ guidance, and package and changelog previews.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+This project is licensed under either of [Apache License, Version 2.0](LICENSE-APACHE) or the
+[MIT License](LICENSE-MIT), at your option.
 
 [api]: https://docs.rs/ratatui-spinner/latest/ratatui_spinner/all.html
 [bar]: https://docs.rs/ratatui-spinner/latest/ratatui_spinner/struct.BarSpinner.html

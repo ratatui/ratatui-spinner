@@ -598,27 +598,27 @@ mod tests {
 
     #[test]
     fn all_presets_non_empty() {
-        assert!(!FluxFrames::BRAILLE.is_empty());
-        assert!(!FluxFrames::ORBIT.is_empty());
-        assert!(!FluxFrames::CLASSIC.is_empty());
-        assert!(!FluxFrames::LINE.is_empty());
-        assert!(!FluxFrames::BLOCK.is_empty());
-        assert!(!FluxFrames::ARC.is_empty());
-        assert!(!FluxFrames::BOUNCE.is_empty());
-        assert!(!FluxFrames::HALF.is_empty());
-        assert!(!FluxFrames::SQUARE.is_empty());
-        assert!(!FluxFrames::DICE.is_empty());
-        assert!(!FluxFrames::CLOCK.is_empty());
-        assert!(!FluxFrames::MOON.is_empty());
-        assert!(!FluxFrames::TRIANGLES.is_empty());
-        assert!(!FluxFrames::PULSE.is_empty());
-        assert!(!FluxFrames::BAR.is_empty());
-        assert!(!FluxFrames::CORNERS.is_empty());
-        assert!(!FluxFrames::CIRCLE_FILL.is_empty());
-        assert!(!FluxFrames::PISTON.is_empty());
-        assert!(!FluxFrames::STAR.is_empty());
-        assert!(!FluxFrames::PAIR.is_empty());
-        assert!(!FluxFrames::DIAMOND.is_empty());
+        assert_ne!(FluxFrames::BRAILLE, [] as [char; 0]);
+        assert_ne!(FluxFrames::ORBIT, [] as [char; 0]);
+        assert_ne!(FluxFrames::CLASSIC, [] as [char; 0]);
+        assert_ne!(FluxFrames::LINE, [] as [char; 0]);
+        assert_ne!(FluxFrames::BLOCK, [] as [char; 0]);
+        assert_ne!(FluxFrames::ARC, [] as [char; 0]);
+        assert_ne!(FluxFrames::BOUNCE, [] as [char; 0]);
+        assert_ne!(FluxFrames::HALF, [] as [char; 0]);
+        assert_ne!(FluxFrames::SQUARE, [] as [char; 0]);
+        assert_ne!(FluxFrames::DICE, [] as [char; 0]);
+        assert_ne!(FluxFrames::CLOCK, [] as [char; 0]);
+        assert_ne!(FluxFrames::MOON, [] as [char; 0]);
+        assert_ne!(FluxFrames::TRIANGLES, [] as [char; 0]);
+        assert_ne!(FluxFrames::PULSE, [] as [char; 0]);
+        assert_ne!(FluxFrames::BAR, [] as [char; 0]);
+        assert_ne!(FluxFrames::CORNERS, [] as [char; 0]);
+        assert_ne!(FluxFrames::CIRCLE_FILL, [] as [char; 0]);
+        assert_ne!(FluxFrames::PISTON, [] as [char; 0]);
+        assert_ne!(FluxFrames::STAR, [] as [char; 0]);
+        assert_ne!(FluxFrames::PAIR, [] as [char; 0]);
+        assert_ne!(FluxFrames::DIAMOND, [] as [char; 0]);
     }
 
     #[test]
