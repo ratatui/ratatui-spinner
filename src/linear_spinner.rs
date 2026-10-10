@@ -773,7 +773,7 @@ mod tests {
         // First 3 rows should be empty, last 3 should contain symbols.
         assert_eq!(lines.len(), 6);
         assert!(lines[0].spans.is_empty() || lines[0].to_string().is_empty());
-        assert!(!lines[3].spans.is_empty());
+        assert_ne!(lines[3].spans, [] as [Span<'_>; 0]);
     }
 
     #[test]

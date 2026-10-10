@@ -592,8 +592,8 @@ mod tests {
         for size in 2..=6 {
             for centre in [Centre::Filled, Centre::Empty] {
                 let e = SquareEngine::build(size, centre, Spin::Clockwise);
-                assert!(!e.head.is_empty());
-                assert!(!e.tail.is_empty());
+                assert_ne!(e.head, [] as [Coord; 0]);
+                assert_ne!(e.tail, [] as [Coord; 0]);
             }
         }
     }
