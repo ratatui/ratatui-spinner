@@ -1,4 +1,8 @@
-//! Square braille-arc spinner — exact port of the Go implementation.
+//! Configurable braille-ring spinner.
+//!
+//! [`RectShape::Square`] is the only shape. [`RectSpinner`] shares the [`Centre`] and [`Spin`]
+//! option types with [`crate::SquareSpinner`], but the two widgets use separate renderers and can
+//! produce different dimensions.
 
 use std::collections::HashMap;
 
@@ -20,7 +24,7 @@ const BRAILLE_MAP: [[u8; 2]; 4] = [
 
 // ── Public enums ──────────────────────────────────────────────────────────────
 
-/// Rotation direction of the arc.
+/// Rotation direction shared by the braille-arc and wave spinners.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum Spin {
     /// Arc travels clockwise around the perimeter (default).
@@ -30,7 +34,7 @@ pub enum Spin {
     CounterClockwise,
 }
 
-/// Whether the centre of the spinner is filled or empty.
+/// Whether the centre of a square or rectangular spinner is filled or empty.
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Default)]
 pub enum Centre {
     /// The interior is filled with a solid block.
@@ -43,7 +47,7 @@ pub enum Centre {
 /// Shape of the spinner.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum RectShape {
-    /// A square spinner with arc thickness parameter (size 2–8).
+    /// A square spinner whose size is clamped to `2..=8` during rendering.
     Square(usize),
 }
 
@@ -411,7 +415,45 @@ impl SquareEngine {
 
 // ── Public widget ─────────────────────────────────────────────────────────────
 
-/// A simple square braille-arc spinner with filled or empty center.
+/// A configurable braille-arc spinner with a filled or empty centre.
+///
+/// [`RectShape::Square`] is the only shape. Its size is clamped to `2..=8` during rendering.
+/// [`Centre`] controls the interior, while [`Spin`] reverses the moving outer arc.
+///
+/// `RectSpinner` takes a [`RectShape`]; [`crate::SquareSpinner`] takes its size directly. The two
+/// widgets use separate rendering implementations and produce different dimensions.
+///
+/// # Examples
+///
+/// ```no_run
+/// use ratatui::layout::Rect;
+/// use ratatui::style::Color;
+/// use ratatui::Frame;
+/// use ratatui_spinner::{Centre, RectShape, RectSpinner, Spin};
+///
+/// fn draw(frame: &mut Frame, area: Rect, tick: u64) {
+///     let spinner = RectSpinner::new(tick)
+///         .shape(RectShape::Square(4))
+///         .centre(Centre::Empty)
+///         .spin(Spin::CounterClockwise)
+///         .outer_color(Color::LightCyan);
+///     frame.render_widget(spinner, area);
+/// }
+/// ```
+///
+/// # Configuration
+///
+/// | Builder                                  | Default                                     | Purpose                         |
+/// |------------------------------------------|---------------------------------------------|---------------------------------|
+/// | [`shape`](Self::shape)                   | [`RectShape::Square(2)`](RectShape::Square) | Select shape and size           |
+/// | [`centre`](Self::centre)                 | [`Centre::Filled`]                          | Select a filled or empty centre |
+/// | [`spin`](Self::spin)                     | [`Spin::Clockwise`]                         | Set rotation direction          |
+/// | [`ticks_per_step`](Self::ticks_per_step) | `1`                                         | Hold each arc position          |
+/// | [`outer_color`](Self::outer_color)       | [`Color::Cyan`]                             | Style the moving outer arc      |
+/// | [`inner_color`](Self::inner_color)       | [`Color::DarkGray`]                         | Style the centre                |
+/// | [`alignment`](Self::alignment)           | [`Alignment::Left`]                         | Align the spinner in its area   |
+/// | [`style`](Self::style)                   | [`Style::default()`]                        | Set the base widget style       |
+/// | [`block`](Self::block)                   | none                                        | Render inside a [`Block`]       |
 #[derive(Debug, Clone)]
 pub struct RectSpinner<'a> {
     tick: u64,

@@ -379,8 +379,8 @@ impl SquareEngine {
 /// A rotating square braille-arc spinner.
 ///
 /// A comet-like arc of braille dots travels around the perimeter of a square.
-/// Supports filled or empty center modes and clockwise/counter-clockwise
-/// directions.
+/// [`Centre`] selects a filled or empty center, and [`Spin`] selects clockwise or
+/// counter-clockwise motion.
 ///
 /// # Quick start
 ///
@@ -394,6 +394,23 @@ impl SquareEngine {
 ///     .dim_color(Color::DarkGray)
 ///     .centre(Centre::Filled);
 /// ```
+///
+/// # Configuration
+///
+/// `SquareSpinner` is a separate implementation from [`RectSpinner`](crate::RectSpinner), not an
+/// alias or wrapper. Its [`char_size`](Self::char_size) method reports its own exact dimensions.
+///
+/// | Builder                                  | Default              | Purpose                                 |
+/// |------------------------------------------|----------------------|-----------------------------------------|
+/// | [`size`](Self::size)                     | `2`                  | Set the square size, clamped to `2..=8` |
+/// | [`centre`](Self::centre)                 | [`Centre::Filled`]   | Select a filled or empty centre         |
+/// | [`spin`](Self::spin)                     | [`Spin::Clockwise`]  | Set rotation direction                  |
+/// | [`ticks_per_step`](Self::ticks_per_step) | `1`                  | Hold each arc position                  |
+/// | [`arc_color`](Self::arc_color)           | [`Color::White`]     | Style the bright arc                    |
+/// | [`dim_color`](Self::dim_color)           | [`Color::DarkGray`]  | Style the dim ring and centre           |
+/// | [`alignment`](Self::alignment)           | [`Alignment::Left`]  | Align the square in its area            |
+/// | [`style`](Self::style)                   | [`Style::default()`] | Set the base widget style               |
+/// | [`block`](Self::block)                   | none                 | Render inside a [`Block`]               |
 #[derive(Debug, Clone)]
 pub struct SquareSpinner<'a> {
     tick: u64,

@@ -17,6 +17,15 @@ Interactive examples live in `examples/`, with VHS recordings defined in `exampl
 - Run `cargo package --locked` to verify the distributable without uploading it.
 - `just check-all` runs formatting, clippy, tests, and documentation checks.
 
+## Code organization
+
+- Keep code in top-to-bottom reading order and prefer local, linear control flow.
+- Add a helper when it reduces the reasoning burden or replaces explanatory comments without
+  creating a parameter-heavy interface.
+- Prefer one fallible operation per line when it makes the failure site easier to identify.
+- Use explanatory variables to keep nested Rust expressions shallow and make intermediate intent
+  visible.
+
 ## Widget behavior and API
 
 - Preserve all six visual families: Linear, Rect, Square, Circle, Bar, and Flux.
@@ -40,6 +49,21 @@ Interactive examples live in `examples/`, with VHS recordings defined in `exampl
 - Retain VHS tapes and write output to `examples/vhs/generated/`. GIFs use Git LFS; use
   `just lfs-pull` to retrieve media for the checked-out revision.
 - Hide compilation in recordings and regenerate affected demos when visual behavior changes.
+
+## Documentation and showcase media
+
+- When reorganizing documentation, preserve its informational coverage unless removal is
+  intentional. Use the previous document as a checklist and verify technical claims against the
+  source rather than carrying them forward unexamined.
+- Lead README and showcase material with a compact overview that communicates the library's range
+  and useful configuration at a glance. Follow it with focused examples and reference detail.
+- Prefer content-sized recordings over terminal-shaped captures. Keep recording dimensions fitted
+  to the rendered character grid, and inspect a still frame for clipping, alignment, framing, and
+  excess whitespace before accepting the animation.
+- Use a stable frame schedule that accounts for rendering time rather than adding a full delay
+  after each frame.
+- Losslessly optimize generated GIFs, but keep the original when optimization increases its size.
+  Keep the measured file-size rationale near the generation workflow.
 
 ## Maintenance and provenance
 

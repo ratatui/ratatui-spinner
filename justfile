@@ -66,13 +66,63 @@ changelog-preview:
 # Run development checks, an optimized build, and package verification.
 check-release: check-all build-release package
 
-# VHS recordings are written to examples/vhs/generated and tracked with Git LFS.
+# Record every maintained VHS gallery
 vhs-all:
-    @for tape in examples/vhs/*.tape; do vhs "$tape" || exit; done
+    cargo build --release --example readme
+    mkdir -p target/vhs
+    @for tape in examples/vhs/*.tape; do env -u NO_COLOR vhs "$tape" || exit; done
+    just vhs-optimize
 
-# Record one tape, for example: just vhs-tape spinner-demo.
+# Restore GIF data from LFS pointers before repeating the optimization
+vhs-materialize:
+    @for tape in examples/vhs/*.tape; do \
+        gif="examples/vhs/generated/$(basename "$tape" .tape).gif"; \
+        if grep -qF 'version https://git-lfs.github.com/spec/v1' "$gif"; then \
+            git lfs smudge < "$gif" > "$gif.materialized" || exit; \
+            mv "$gif.materialized" "$gif"; \
+        fi; \
+    done
+
+# Losslessly optimize existing GIFs with ImageMagick
+# Current recordings shrink substantially: Flux 32.4 MB -> 5.0 MB, Bar 9-10 MB -> about 1 MB,
+# and Linear 2.4-5.3 MB -> 0.2-0.6 MB
+# Keeps the VHS output when optimization would make an image larger
+vhs-optimize: vhs-materialize
+    @command -v magick >/dev/null 2>&1 || { echo "ImageMagick not found"; exit 1; }
+    @for tape in examples/vhs/*.tape; do \
+        gif="examples/vhs/generated/$(basename "$tape" .tape).gif"; \
+        optimized="${gif%.gif}.optimized.gif"; \
+        before=$(wc -c < "$gif" | tr -d ' '); \
+        magick "$gif" -coalesce -layers Optimize "$optimized" || exit; \
+        after=$(wc -c < "$optimized" | tr -d ' '); \
+        if [ "$after" -lt "$before" ]; then \
+            mv "$optimized" "$gif"; \
+            printf '%s: %s -> %s bytes\n' "$gif" "$before" "$after"; \
+        else \
+            rm "$optimized"; \
+            printf '%s: kept %s bytes (candidate %s)\n' "$gif" "$before" "$after"; \
+        fi; \
+    done
+    just vhs-lfs-clean
+
+# Store generated media as LFS pointers because jj does not run Git clean filters when snapshotting
+vhs-lfs-clean:
+    @command -v git-lfs >/dev/null 2>&1 || { echo "Git LFS not found"; exit 1; }
+    @for tape in examples/vhs/*.tape; do \
+        gif="examples/vhs/generated/$(basename "$tape" .tape).gif"; \
+        if test "$(head -c 6 "$gif")" = 'GIF89a'; then \
+            git lfs clean -- "$gif" < "$gif" > "$gif.pointer" || exit; \
+            git lfs pointer --check --file="$gif.pointer" || exit; \
+            mv "$gif.pointer" "$gif"; \
+        fi; \
+    done
+
+# Record one tape, for example: just vhs-tape overview
 vhs-tape name:
-    vhs "examples/vhs/{{ name }}.tape"
+    cargo build --release --example readme
+    mkdir -p target/vhs
+    env -u NO_COLOR vhs "examples/vhs/{{ name }}.tape"
+    just vhs-lfs-clean
 
 # List the available recording sources.
 vhs-list:

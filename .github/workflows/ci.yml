@@ -40,6 +40,27 @@ jobs:
       - run: cargo test --locked --all-features
       - run: cargo package --locked
 
+  msrv:
+    name: MSRV
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Read MSRV
+        id: msrv
+        run: |
+          msrv=$(sed -n 's/^rust-version = "\(.*\)"$/\1/p' Cargo.toml)
+          if test -z "$msrv"; then
+            echo "::error::Could not read rust-version from Cargo.toml"
+            exit 1
+          fi
+          echo "version=$msrv" >> "$GITHUB_OUTPUT"
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: ${{ steps.msrv.outputs.version }}
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo test --locked --all-targets --all-features
+      - run: cargo test --locked --doc --all-features
+
   doc:
     name: Documentation
     runs-on: ubuntu-latest

@@ -2,7 +2,7 @@
 name = "ratatui-spinner"
 version = "0.4.18"
 edition = "2021"
-rust-version = "1.74.0"
+rust-version = "1.88.0"
 license = "MIT OR Apache-2.0"
 description = "Customizable animated spinner widgets for Ratatui — braille arcs, bouncing bars, rotating glyphs, and symbol styles"
 repository = "https://github.com/ratatui/ratatui-spinner"
@@ -27,10 +27,16 @@ ratatui = { version = "0.30", default-features = false }
 color-eyre = "0.6"
 ratatui = { version = "0.30", features = ["crossterm"] }
 crossterm = "0.29"
+clap = { version = "4", features = ["derive"] }
+ratatui-macros = "0.7"
 
 [lib]
 name = "ratatui_spinner"
 path = "src/lib.rs"
+
+[[example]]
+name = "readme"
+path = "examples/readme/main.rs"
 
 [[example]]
 name = "spinner"
